@@ -1,0 +1,14 @@
+[workspace]
+
+members = [
+    "ac1",
+    "ac2",
+    "ac3",
+    "ac4",
+    "ac5",
+    "ac6",
+    "ac7",
+    "ac8",
+    "ac9",
+    "advent_of_code_util",
+]
