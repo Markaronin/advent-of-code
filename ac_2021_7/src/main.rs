@@ -30,11 +30,17 @@ fn get_minimum_fuel(input_file: &str) -> (u32, u32) {
     let max_crab_position = crab_positions.iter().max().unwrap().clone();
     let mut min_fuel_part_1: u32 = u32::MAX;
     for position in min_crab_position..=max_crab_position {
-        min_fuel_part_1 = std::cmp::min(min_fuel_part_1, cost_to_align_part_1(&crab_positions, position))
+        min_fuel_part_1 = std::cmp::min(
+            min_fuel_part_1,
+            cost_to_align_part_1(&crab_positions, position),
+        )
     }
     let mut min_fuel_part_2: u32 = u32::MAX;
     for position in min_crab_position..=max_crab_position {
-        min_fuel_part_2 = std::cmp::min(min_fuel_part_2, cost_to_align_part_2(&crab_positions, position))
+        min_fuel_part_2 = std::cmp::min(
+            min_fuel_part_2,
+            cost_to_align_part_2(&crab_positions, position),
+        )
     }
     (min_fuel_part_1, min_fuel_part_2)
 }

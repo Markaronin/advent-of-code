@@ -162,5 +162,8 @@ fn main() {
         }
         numbers[0]
     };
-    println!("Life support rating: {}", oxygen_generator_rating * co2_scrubber_rating);
+    println!(
+        "Life support rating: {}",
+        oxygen_generator_rating * co2_scrubber_rating
+    );
 }

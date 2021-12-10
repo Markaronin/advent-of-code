@@ -1,7 +1,8 @@
 use advent_of_code_util::read_lines;
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
-    let input = read_lines(input_file).iter()
+    let input = read_lines(input_file)
+        .iter()
         .map(|line| line.parse::<usize>().unwrap())
         .collect::<Vec<usize>>();
     let mut part_1_output = None;
