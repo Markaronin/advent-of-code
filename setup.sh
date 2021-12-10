@@ -7,8 +7,10 @@ cargo init $1
 cat >./$1/src/main.rs << END
 use advent_of_code_util::read_lines;
 
-fn get_program_output(input_file: &str) {
+fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines(input_file);
+
+    (0, 0)
 }
 
 #[cfg(test)]
@@ -18,13 +20,17 @@ mod tests {
     #[test]
     fn main() {
         let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
-        let output = get_program_output(&file_path);
+        let (part_1_output, part_2_output) = get_program_output(&file_path);
+        // assert_eq!(part_1_output, asdf);
+        // assert_eq!(part_2_output, asdf);
     }
 }
 
 fn main() {
     let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let output = get_program_output(&file_path);
+    let (part_1_output, part_2_output) = get_program_output(&file_path);
+    println!("Part 1 output: {}", part_1_output);
+    println!("Part 2 output: {}", part_2_output);
 }
 END
 
