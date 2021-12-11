@@ -1,13 +1,11 @@
 use advent_of_code_util::read_lines;
 
 struct TreeMap {
-    map: Vec<String>
+    map: Vec<String>,
 }
 impl TreeMap {
     fn from_lines(lines: Vec<String>) -> Self {
-        TreeMap {
-            map: lines
-        }
+        TreeMap { map: lines }
     }
     fn at_position(&self, col: usize, row: usize) -> char {
         let wrapped_col = col % self.map[0].len();
@@ -34,13 +32,10 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines(input_file);
     let map = TreeMap::from_lines(input);
     let hit_count_1 = hits_for_slope(&map, (3, 1));
-    let hit_count_product = [
-        (1, 1),
-        (3, 1),
-        (5, 1),
-        (7, 1),
-        (1, 2),
-    ].iter().map(|slope| hits_for_slope(&map, *slope)).product();
+    let hit_count_product = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
+        .iter()
+        .map(|slope| hits_for_slope(&map, *slope))
+        .product();
 
     (hit_count_1, hit_count_product)
 }

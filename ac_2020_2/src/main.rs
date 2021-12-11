@@ -9,27 +9,26 @@ impl Policy {
     fn from_str(string: &str) -> Self {
         let (range_string, character) = string.split(" ").collect_tuple().unwrap();
         Policy {
-            range: range_string.split('-').map(|s| s.parse::<usize>().unwrap()).collect_tuple().unwrap(),
+            range: range_string
+                .split('-')
+                .map(|s| s.parse::<usize>().unwrap())
+                .collect_tuple()
+                .unwrap(),
             character: character.chars().next().unwrap(),
         }
     }
 
     fn is_valid_1(&self, password: &str) -> bool {
         (self.range.0..=self.range.1)
-            .contains(
-            &password
-                    .chars()
-                    .filter(|ch| *ch == self.character).count()
-            )
+            .contains(&password.chars().filter(|ch| *ch == self.character).count())
     }
 
     fn is_valid_2(&self, password: &str) -> bool {
         [self.range.0, self.range.1]
             .iter()
-            .filter(|pos| 
-                password.chars().nth(**pos - 1).unwrap() == self.character
-            )
-            .count() == 1
+            .filter(|pos| password.chars().nth(**pos - 1).unwrap() == self.character)
+            .count()
+            == 1
     }
 }
 
@@ -63,7 +62,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .map(|line| PasswordAndPolicy::from_str(line))
         .filter(|pap| pap.password_matches_policy_1())
         .count();
-    
+
     let valid_passwords_2 = input
         .iter()
         .map(|line| PasswordAndPolicy::from_str(line))
