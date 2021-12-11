@@ -42,6 +42,70 @@ pub fn split_block_on_whitespace(block: Vec<String>) -> Vec<String> {
         .collect::<Vec<String>>()
 }
 
+#[derive(Debug, PartialEq, Eq, Clone)]
+pub struct Coordinate {
+    pub x: usize,
+    pub y: usize,
+}
+impl Coordinate {
+    pub fn get_surrounding_coordinates(
+        &self,
+        max_width: usize,
+        max_height: usize,
+    ) -> Vec<Coordinate> {
+        let mut surrounding_coordinates = vec![];
+        if self.x > 0 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x - 1,
+                y: self.y,
+            });
+            if self.y > 0 {
+                surrounding_coordinates.push(Coordinate {
+                    x: self.x - 1,
+                    y: self.y - 1,
+                });
+            }
+        }
+        if self.y > 0 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x,
+                y: self.y - 1,
+            });
+            if self.x < max_width - 1 {
+                surrounding_coordinates.push(Coordinate {
+                    x: self.x + 1,
+                    y: self.y - 1,
+                });
+            }
+        }
+        if self.x < max_width - 1 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x + 1,
+                y: self.y,
+            });
+            if self.y < max_height - 1 {
+                surrounding_coordinates.push(Coordinate {
+                    x: self.x + 1,
+                    y: self.y + 1,
+                });
+            }
+        }
+        if self.y < max_height - 1 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x,
+                y: self.y + 1,
+            });
+            if self.x > 0 {
+                surrounding_coordinates.push(Coordinate {
+                    x: self.x - 1,
+                    y: self.y + 1,
+                });
+            }
+        }
+        surrounding_coordinates
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::*;
