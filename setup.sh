@@ -21,8 +21,8 @@ mod tests {
     fn main() {
         let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
         let (part_1_output, part_2_output) = get_program_output(&file_path);
-        // assert_eq!(part_1_output, asdf);
-        // assert_eq!(part_2_output, asdf);
+        assert_eq!(part_1_output, 0);
+        assert_eq!(part_2_output, 0);
     }
 }
 
