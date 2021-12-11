@@ -5,7 +5,7 @@ sed -i "`wc -l < Cargo.toml`i\\    \"$1\",\\" Cargo.toml
 cargo init $1
 
 cat >./$1/src/main.rs << END
-use advent_of_code_util::read_lines;
+use advent_of_code_util::*;
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines(input_file);
