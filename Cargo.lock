@@ -10,6 +10,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2020_10"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+]
+
+[[package]]
 name = "ac_2020_2"
 version = "0.1.0"
 dependencies = [
