@@ -1,5 +1,10 @@
 project_name=$1
 
+if [ -d ./$project_name ]; then
+    echo "Project already exists"
+    exit 1
+fi
+
 sed -i "`wc -l < Cargo.toml`i\\    \"$1\",\\" Cargo.toml
 
 cargo init $1
