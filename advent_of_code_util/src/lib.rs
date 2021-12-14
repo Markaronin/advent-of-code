@@ -1,3 +1,4 @@
+use itertools::Itertools;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
@@ -46,12 +47,20 @@ pub fn abs_diff(slf: usize, other: usize) -> usize {
     std::cmp::max(slf, other) - std::cmp::min(slf, other)
 }
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Hash)]
 pub struct Coordinate {
     pub x: usize,
     pub y: usize,
 }
 impl Coordinate {
+    pub fn from_str(string: &str) -> Self {
+        let (x, y) = string
+            .split(',')
+            .map(|num| num.parse::<usize>().unwrap())
+            .collect_tuple::<(usize, usize)>()
+            .unwrap();
+        Coordinate { x, y }
+    }
     pub fn get_surrounding_coordinates(
         &self,
         max_width: usize,
