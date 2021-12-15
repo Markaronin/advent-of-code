@@ -123,6 +123,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2021_15"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+]
+
+[[package]]
 name = "ac_2021_2"
 version = "0.1.0"
 dependencies = [

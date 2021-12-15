@@ -47,7 +47,7 @@ pub fn abs_diff(slf: usize, other: usize) -> usize {
     std::cmp::max(slf, other) - std::cmp::min(slf, other)
 }
 
-#[derive(Debug, PartialEq, Eq, Clone, Hash)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash)]
 pub struct Coordinate {
     pub x: usize,
     pub y: usize,
@@ -60,6 +60,39 @@ impl Coordinate {
             .collect_tuple::<(usize, usize)>()
             .unwrap();
         Coordinate { x, y }
+    }
+
+    pub fn get_surrounding_non_diagonal_coordinates(
+        &self,
+        max_width: usize,
+        max_height: usize,
+    ) -> Vec<Coordinate> {
+        let mut surrounding_coordinates = vec![];
+        if self.x > 0 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x - 1,
+                y: self.y,
+            });
+        }
+        if self.y > 0 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x,
+                y: self.y - 1,
+            });
+        }
+        if self.x < max_width - 1 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x + 1,
+                y: self.y,
+            });
+        }
+        if self.y < max_height - 1 {
+            surrounding_coordinates.push(Coordinate {
+                x: self.x,
+                y: self.y + 1,
+            });
+        }
+        surrounding_coordinates
     }
     pub fn get_surrounding_coordinates(
         &self,

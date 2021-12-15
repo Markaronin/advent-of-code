@@ -35,19 +35,20 @@ impl Polymerization {
                 let pairs_string = blocks[0][0].clone();
                 let mut pairs = HashMap::new();
                 for i in 0..pairs_string.len() - 1 {
-                    let pair = [pairs_string.chars().nth(i).unwrap(), pairs_string.chars().nth(i + 1).unwrap()];
+                    let pair = [
+                        pairs_string.chars().nth(i).unwrap(),
+                        pairs_string.chars().nth(i + 1).unwrap(),
+                    ];
                     *pairs.entry(pair).or_insert(0) += 1;
                 }
                 pairs
             },
-            amounts: blocks[0][0].clone()
-                .chars()
-                .counts(),
+            amounts: blocks[0][0].clone().chars().counts(),
             pair_insertion_rules: blocks[1]
                 .clone()
                 .into_iter()
                 .map(|pir_string| PairInsertionRule::from_str(&pir_string))
-                .collect::<Vec<_>>()
+                .collect::<Vec<_>>(),
         }
     }
 
@@ -86,7 +87,6 @@ impl Polymerization {
             self.step();
         }
     }
-
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
@@ -95,11 +95,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 
     polymerization.n_steps(10);
 
-    let part_1_output = polymerization.most_common_element().1 - polymerization.least_common_element().1;
+    let part_1_output =
+        polymerization.most_common_element().1 - polymerization.least_common_element().1;
 
     polymerization.n_steps(40 - 10);
 
-    let part_2_output = polymerization.most_common_element().1 - polymerization.least_common_element().1;
+    let part_2_output =
+        polymerization.most_common_element().1 - polymerization.least_common_element().1;
 
     (part_1_output, part_2_output)
 }
