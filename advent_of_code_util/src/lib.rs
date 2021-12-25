@@ -152,6 +152,13 @@ impl Coordinate {
     }
 }
 
+pub fn remove_first_and_last(string: &str) -> String {
+    let mut chars = string.chars();
+    chars.next();
+    chars.next_back();
+    chars.collect()
+}
+
 #[cfg(test)]
 mod tests {
     use crate::*;
