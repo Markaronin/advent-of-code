@@ -29,5 +29,6 @@ members = [
     "ac_2021_16",
     "ac_2021_17",
     "ac_2021_18",
+    "ac_2022_01",
     "advent_of_code_util",
 ]
