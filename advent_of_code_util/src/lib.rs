@@ -186,3 +186,28 @@ mod tests {
         );
     }
 }
+
+#[macro_export]
+macro_rules! base_aoc {
+    ( $part_1_answer:literal, $part_2_answer:literal ) => {
+        #[cfg(test)]
+        mod tests {
+            use super::*;
+
+            #[test]
+            fn main() {
+                let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
+                let (part_1_output, part_2_output) = get_program_output(&file_path);
+                assert_eq!(part_1_output, $part_1_answer);
+                assert_eq!(part_2_output, $part_2_answer);
+            }
+        }
+
+        fn main() {
+            let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+            let (part_1_output, part_2_output) = get_program_output(&file_path);
+            println!("Part 1 output: {}", part_1_output);
+            println!("Part 2 output: {}", part_2_output);
+        }
+    };
+}
