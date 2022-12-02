@@ -32,3 +32,6 @@ members = [
     "ac_2022_01",
     "advent_of_code_util",
 ]
+
+[workspace.dependencies]
+itertools = "0.10.2"

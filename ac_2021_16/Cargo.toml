@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 advent_of_code_util = {path = "../advent_of_code_util"}
-itertools = "0.10.2"
+itertools = { workspace = true }
