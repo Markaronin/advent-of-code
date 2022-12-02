@@ -5,7 +5,7 @@ if [ -d ./$project_name ]; then
     exit 1
 fi
 
-sed -i "`wc -l < Cargo.toml`i\\    \"$1\",\\" Cargo.toml
+sed -i "s/    \"advent_of_code_util\",/    \"$1\",\n    \"advent_of_code_util\",/g" Cargo.toml
 
 cargo init $1
 
@@ -33,8 +33,6 @@ edition.workspace = true
 advent_of_code_util = {path = "../advent_of_code_util"}
 itertools.workspace = true
 END
-
-echo "advent_of_code_util = {path = \"../advent_of_code_util\"}" >> $1/Cargo.toml
 
 code ./$1/src/main.rs
 
