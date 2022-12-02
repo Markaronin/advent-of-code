@@ -1,11 +1,11 @@
 [package]
 name = "ac_2020_4"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 advent_of_code_util = {path = "../advent_of_code_util"}
-itertools = { workspace = true }
+itertools.workspace = true
 regex = "1"

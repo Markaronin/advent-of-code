@@ -21,6 +21,19 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 base_aoc!(0, 0);
 END
 
+cat >./$1/Cargo.toml << END
+[package]
+name = "$1"
+version.workspace = true
+edition.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+advent_of_code_util = {path = "../advent_of_code_util"}
+itertools.workspace = true
+END
+
 echo "advent_of_code_util = {path = \"../advent_of_code_util\"}" >> $1/Cargo.toml
 
 code ./$1/src/main.rs

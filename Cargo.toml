@@ -33,5 +33,9 @@ members = [
     "advent_of_code_util",
 ]
 
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
 [workspace.dependencies]
 itertools = "0.10.2"
