@@ -5,8 +5,6 @@ if [ -d ./$project_name ]; then
     exit 1
 fi
 
-sed -i "s/    \"advent_of_code_util\",/    \"$1\",\n    \"advent_of_code_util\",/g" Cargo.toml
-
 cargo init $1
 
 cat >./$1/src/main.rs << END
