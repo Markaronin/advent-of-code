@@ -1,3 +1,4 @@
+#![allow(unused_variables, unused_mut)]
 use std::collections::HashMap;
 
 use advent_of_code_util::*;

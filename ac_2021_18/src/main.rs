@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use advent_of_code_util::*;
 
 #[derive(Debug)]
