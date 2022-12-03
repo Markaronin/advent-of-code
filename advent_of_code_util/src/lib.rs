@@ -14,6 +14,18 @@ where
         .collect()
 }
 
+pub fn read_lines_of_chars<P>(filename: P) -> Vec<Vec<char>>
+where
+    P: AsRef<Path>,
+{
+    let file = File::open(filename).unwrap();
+    io::BufReader::new(file)
+        .lines()
+        .map(|line| line.unwrap())
+        .map(|line| line.chars().collect_vec())
+        .collect()
+}
+
 pub fn read_blocks<P>(filename: P) -> Vec<Vec<String>>
 where
     P: AsRef<Path>,
