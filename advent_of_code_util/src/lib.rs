@@ -1,4 +1,5 @@
 use itertools::Itertools;
+use std::collections::BTreeSet;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
@@ -169,6 +170,21 @@ pub fn remove_first_and_last(string: &str) -> String {
     chars.next();
     chars.next_back();
     chars.collect()
+}
+
+pub fn intersect_vectors<T: std::cmp::Ord>(vecs: Vec<Vec<T>>) -> Vec<T> {
+    let mut vec_iter = vecs.into_iter();
+    let mut remaining = BTreeSet::from_iter(vec_iter.next().unwrap());
+
+    for vec in vec_iter {
+        let vec_set = BTreeSet::from_iter(vec.into_iter());
+        remaining = remaining
+            .into_iter()
+            .filter(|item| vec_set.contains(item))
+            .collect();
+    }
+
+    remaining.into_iter().collect_vec()
 }
 
 #[cfg(test)]
