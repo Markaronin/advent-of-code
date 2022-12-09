@@ -56,11 +56,11 @@ pub fn split_block_on_whitespace(block: Vec<String>) -> Vec<String> {
         .collect::<Vec<String>>()
 }
 
-pub fn abs_diff(slf: usize, other: usize) -> usize {
+pub fn abs_diff<T: Ord + std::ops::Sub<Output = T> + Copy>(slf: T, other: T) -> T {
     std::cmp::max(slf, other) - std::cmp::min(slf, other)
 }
 
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash, PartialOrd, Ord)]
 pub struct Coordinate {
     pub x: usize,
     pub y: usize,
