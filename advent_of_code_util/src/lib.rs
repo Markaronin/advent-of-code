@@ -75,6 +75,38 @@ impl Coordinate {
         Coordinate { x, y }
     }
 
+    /**
+    assumes that from and to are either on a horizontal or vertical line
+    */
+    pub fn get_points_between_vertices(&self, to: &Coordinate) -> Vec<Coordinate> {
+        assert!(self.x == to.x || self.y == to.y);
+        if self.x == to.x {
+            if self.y < to.y {
+                return (self.y..=to.y)
+                    .map(|y| Coordinate { x: self.x, y })
+                    .collect();
+            } else {
+                return (to.y..=self.y)
+                    .map(|y| Coordinate { x: self.x, y })
+                    .collect();
+            }
+        } else {
+            if self.x < to.x {
+                return (self.x..=to.x)
+                    .map(|x| Coordinate { x, y: self.y })
+                    .collect();
+            } else {
+                return (to.x..=self.x)
+                    .map(|x| Coordinate { x, y: self.y })
+                    .collect();
+            }
+        }
+    }
+
+    pub fn is_within_bounds(&self, min_x: usize, max_x: usize, min_y: usize, max_y: usize) -> bool {
+        self.x >= min_x && self.x <= max_x && self.y >= min_y && self.y <= max_y
+    }
+
     pub fn get_surrounding_non_diagonal_coordinates(
         &self,
         max_width: usize,
