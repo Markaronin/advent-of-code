@@ -9,6 +9,7 @@ cargo init $1
 
 cat >./$1/src/main.rs << END
 use advent_of_code_util::*;
+use itertools::Itertools;
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines(input_file);
