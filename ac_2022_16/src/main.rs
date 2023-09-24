@@ -7,128 +7,134 @@ use advent_of_code_util::*;
 use itertools::Itertools;
 use regex::Regex;
 
-const MINUTES: usize = 30;
-
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 struct Valve {
     flow_rate: usize,
     connections: Vec<String>,
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
-struct MapState {
-    pressure_so_far: usize,
-    position: String,
-    minute: usize,
-    already_open: BTreeSet<String>,
+type GraphType = BTreeMap<String, Valve>;
+type DistanceMatrixType = BTreeMap<(String, String), usize>;
+
+fn create_distance_matrix(graph: &GraphType) -> DistanceMatrixType {
+    let mut distance_matrix = DistanceMatrixType::new();
+
+    for starting_valve_name in graph.keys() {
+        let mut queue = VecDeque::new();
+        let mut seen_valves = BTreeSet::new();
+        seen_valves.insert(starting_valve_name.clone());
+        seen_valves.extend(graph.get(starting_valve_name).unwrap().connections.clone());
+
+        queue.extend(
+            graph
+                .get(starting_valve_name)
+                .unwrap()
+                .connections
+                .clone()
+                .into_iter()
+                .map(|n| (n, 1)),
+        );
+
+        while let Some((valve_name, distance)) = queue.pop_front() {
+            // seen_valves.insert();
+            let valve = graph.get(&valve_name).unwrap();
+
+            distance_matrix.insert((starting_valve_name.clone(), valve_name), distance);
+
+            for connection in &valve.connections {
+                if !seen_valves.contains(connection) {
+                    seen_valves.insert(connection.clone());
+                    queue.push_back((connection.clone(), distance + 1));
+                }
+            }
+        }
+    }
+
+    distance_matrix
 }
 
-fn best_path_2(graph: &BTreeMap<String, Valve>) -> usize {
-    let mut map_state_queue = VecDeque::new();
+fn remove_zero_valves(graph: &mut GraphType, distance_matrix: &mut DistanceMatrixType) {
+    let zero_valves = graph
+        .iter()
+        .filter(|(name, valve)| valve.flow_rate == 0 && *name != "AA")
+        .map(|(name, _)| name.clone())
+        .collect_vec();
 
-    map_state_queue.push_back(MapState {
-        pressure_so_far: 0,
-        position: "AA".to_string(),
-        minute: 1,
-        already_open: BTreeSet::new(),
+    zero_valves.into_iter().for_each(|zero_valve| {
+        graph.remove(&zero_valve);
+        let useless_distances = distance_matrix
+            .keys()
+            .filter(|(first, second)| *first == zero_valve || *second == zero_valve)
+            .cloned()
+            .collect_vec();
+
+        useless_distances.into_iter().for_each(|d| {
+            distance_matrix.remove(&d);
+        })
     });
+}
+
+fn get_best_route(graph: &GraphType, distance_matrix: &DistanceMatrixType) -> usize {
+    // Input: current position, time, unopened valves, output so far
+
+    let mut queue = VecDeque::new();
+    queue.push_back((
+        "AA".to_string(),
+        0,
+        graph
+            .keys()
+            .filter(|key| *key != "AA")
+            .cloned()
+            .collect_vec(),
+        0,
+    ));
 
     let mut best_so_far = 0;
 
-    let mut cache: BTreeMap<(String, usize, BTreeSet<String>), usize> = BTreeMap::new();
+    while let Some((valve_name, time_so_far, remaining_valves, pressure_so_far)) = queue.pop_front()
+    {
+        best_so_far = max(best_so_far, pressure_so_far);
 
-    while let Some(map_state) = map_state_queue.pop_front() {
-        best_so_far = max(map_state.pressure_so_far, best_so_far);
-
-        if map_state.minute < 30 && map_state.already_open.len() < graph.len() {
-            let mut additions = vec![];
-
-            if !map_state.already_open.contains(&map_state.position) {
-                let mut new_already_open = map_state.already_open.clone();
-                new_already_open.insert(map_state.position.clone());
-                additions.push(MapState {
-                    pressure_so_far: map_state.pressure_so_far
-                        + (graph.get(&map_state.position).unwrap().flow_rate
-                            * (MINUTES - map_state.minute)),
-                    position: map_state.position.clone(),
-                    minute: map_state.minute + 1,
-                    already_open: new_already_open,
-                })
+        for next_valve_name in remaining_valves.clone() {
+            let new_time_so_far = time_so_far
+                + 1
+                + distance_matrix
+                    .get(&(valve_name.clone(), next_valve_name.clone()))
+                    .unwrap();
+            if new_time_so_far <= 30 {
+                let target_valve = graph.get(&next_valve_name).unwrap();
+                let new_item = (
+                    next_valve_name.clone(),
+                    new_time_so_far,
+                    remaining_valves
+                        .iter()
+                        .filter(|v| **v != next_valve_name)
+                        .cloned()
+                        .collect_vec(),
+                    pressure_so_far + ((30 - new_time_so_far) * target_valve.flow_rate),
+                );
+                queue.push_back(new_item);
             }
-
-            for connection in &graph.get(&map_state.position).unwrap().connections {
-                additions.push(MapState {
-                    pressure_so_far: map_state.pressure_so_far,
-                    position: connection.clone(),
-                    minute: map_state.minute + 1,
-                    already_open: map_state.already_open.clone(),
-                })
-            }
-
-            for addition in additions {
-                let already_in_cache = cache
-                    .get(&(
-                        addition.position.clone(),
-                        addition.minute,
-                        addition.already_open.clone(),
-                    ))
-                    .map(|pressure_so_far| addition.pressure_so_far <= *pressure_so_far)
-                    .unwrap_or(false);
-
-                if !already_in_cache {
-                    cache.insert(
-                        (
-                            addition.position.clone(),
-                            addition.minute,
-                            addition.already_open.clone(),
-                        ),
-                        addition.pressure_so_far,
-                    );
-                    map_state_queue.push_back(addition);
-                } else {
-                    println!("Cache hit!");
-                }
-            }
-
-            println!("So far: {} in queue", map_state_queue.len())
         }
     }
 
     best_so_far
 }
 
-fn best_path(
-    graph: &BTreeMap<String, Valve>,
-    position: &str,
-    mut time_left: usize,
-    mut already_open: BTreeSet<String>,
-) -> usize {
-    if graph.len() == already_open.len() || time_left == 0 {
-        return 0;
-    }
-    let to_move_to = graph.get(position).unwrap().connections[0].clone();
+fn best_path_3(mut graph: GraphType) -> usize {
+    let mut distance_matrix = create_distance_matrix(&graph);
 
-    time_left -= 1;
-    println!("You move to valve {to_move_to}");
+    remove_zero_valves(&mut graph, &mut distance_matrix);
 
-    let valve_steam_released = if !already_open.contains(&to_move_to) {
-        time_left -= 1;
-        println!("You open valve {to_move_to}");
-        already_open.insert(to_move_to.clone());
-        graph.get(&to_move_to).unwrap().flow_rate * time_left
-    } else {
-        0
-    };
+    let best_route_value = get_best_route(&graph, &distance_matrix);
 
-    let other_steam_released = best_path(graph, &to_move_to, time_left, already_open);
-
-    valve_steam_released + other_steam_released
+    best_route_value
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = {
         let raw_input = read_lines(input_file);
-        let mut input: BTreeMap<String, Valve> = BTreeMap::new();
+        let mut input: GraphType = BTreeMap::new();
 
         let regex = Regex::new(
             r"^Valve ([A-Z]{2}) has flow rate=([0-9]+); tunnels? leads? to valve?s? ([A-Z, ]+)$",
@@ -156,10 +162,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         input
     };
 
-    // let starting_position = "AA";
-
-    // let result_1 = best_path(&input, starting_position, MINUTES, BTreeSet::new());
-    let result_1 = best_path_2(&input);
+    let result_1 = best_path_3(input);
 
     (result_1, 0)
 }
