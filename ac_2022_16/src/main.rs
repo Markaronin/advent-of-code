@@ -74,7 +74,7 @@ fn remove_zero_valves(graph: &mut GraphType, distance_matrix: &mut DistanceMatri
     });
 }
 
-fn get_best_route(graph: &GraphType, distance_matrix: &DistanceMatrixType) -> usize {
+fn get_best_route_single(graph: &GraphType, distance_matrix: &DistanceMatrixType) -> usize {
     // Input: current position, time, unopened valves, output so far
 
     let mut queue = VecDeque::new();
@@ -121,14 +121,84 @@ fn get_best_route(graph: &GraphType, distance_matrix: &DistanceMatrixType) -> us
     best_so_far
 }
 
-fn best_path_3(mut graph: GraphType) -> usize {
+fn get_best_route_duo(graph: &GraphType, distance_matrix: &DistanceMatrixType) -> usize {
+    const MAX_TIME: usize = 26;
+    // Input: current position, time, unopened valves, output so far
+
+    let mut queue = VecDeque::new();
+    queue.push_back((
+        [("AA".to_string(), 0), ("AA".to_string(), 0)],
+        0,
+        graph
+            .keys()
+            .filter(|key| *key != "AA")
+            .cloned()
+            .collect_vec(),
+        0,
+    ));
+
+    let mut best_so_far = 0;
+
+    while let Some((times, time_so_far, remaining_valves, pressure_so_far)) = queue.pop_front() {
+        best_so_far = max(best_so_far, pressure_so_far);
+
+        // We know at least one person is free at this point
+        let (index_to_update, _) = times
+            .iter()
+            .find_position(|(_, remaining_time)| *remaining_time == 0)
+            .unwrap();
+
+        for next_valve_name in remaining_valves.clone() {
+            let mut times = times.clone();
+
+            let distance_to_valve = distance_matrix
+                .get(&(times[index_to_update].0.clone(), next_valve_name.clone()))
+                .unwrap();
+            times[index_to_update] = (next_valve_name.clone(), *distance_to_valve + 1);
+
+            let next_time = times
+                .iter()
+                .map(|(_, remaining_time)| *remaining_time)
+                .min()
+                .unwrap();
+
+            times
+                .iter_mut()
+                .for_each(|(_, remaining)| *remaining -= next_time);
+
+            let new_time_so_far = time_so_far + next_time;
+
+            let valve_open_time = time_so_far + *distance_to_valve + 1;
+
+            if valve_open_time <= MAX_TIME {
+                let target_valve = graph.get(&next_valve_name).unwrap();
+                let new_item = (
+                    times.clone(),
+                    new_time_so_far,
+                    remaining_valves
+                        .iter()
+                        .filter(|v| **v != next_valve_name)
+                        .cloned()
+                        .collect_vec(),
+                    pressure_so_far + ((MAX_TIME - valve_open_time) * target_valve.flow_rate),
+                );
+                queue.push_back(new_item);
+            }
+        }
+    }
+
+    best_so_far
+}
+
+fn best_path(mut graph: GraphType) -> (usize, usize) {
     let mut distance_matrix = create_distance_matrix(&graph);
 
     remove_zero_valves(&mut graph, &mut distance_matrix);
 
-    let best_route_value = get_best_route(&graph, &distance_matrix);
+    let best_route_value_single = get_best_route_single(&graph, &distance_matrix);
+    let best_route_value_duo = get_best_route_duo(&graph, &distance_matrix);
 
-    best_route_value
+    (best_route_value_single, best_route_value_duo)
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
@@ -162,9 +232,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         input
     };
 
-    let result_1 = best_path_3(input);
-
-    (result_1, 0)
+    best_path(input)
 }
 
-base_aoc!(1651, 0);
+base_aoc!(1651, 1707);
