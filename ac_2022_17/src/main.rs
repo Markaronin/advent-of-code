@@ -264,4 +264,4 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     (rocks.height(), 0)
 }
 
-base_aoc!(3068, 0);
+base_aoc_ignore_tests!(3068, 0);

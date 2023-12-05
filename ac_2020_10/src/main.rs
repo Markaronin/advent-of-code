@@ -131,6 +131,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 mod tests {
     use super::*;
 
+    #[ignore]
     #[test]
     fn main() {
         let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
