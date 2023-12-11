@@ -4,6 +4,8 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
+pub mod matrix;
+
 pub fn read_lines<P>(filename: P) -> Vec<String>
 where
     P: AsRef<Path>,
@@ -101,6 +103,10 @@ impl Coordinate {
                     .collect();
             }
         }
+    }
+
+    pub fn non_diagonal_distance(&self, other: &Coordinate) -> usize {
+        abs_diff(self.x, other.x) + abs_diff(self.y, other.y)
     }
 
     pub fn is_within_bounds(&self, min_x: usize, max_x: usize, min_y: usize, max_y: usize) -> bool {
