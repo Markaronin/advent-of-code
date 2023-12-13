@@ -1,0 +1,2975 @@
+   Compiling ac_2023_12 v0.1.0 (/Users/jroylance/projects/advent-of-code/ac_2023_12)
+warning: unreachable statement
+   --> ac_2023_12/src/main.rs:115:5
+    |
+113 |       panic!("");
+    |       ---------- any code following this expression is unreachable
+114 |
+115 | /     let mut input_2 = input
+116 | |         .into_iter()
+117 | |         .map(|spring| spring.unfold())
+118 | |         .collect_vec();
+    | |_______________________^ unreachable statement
+    |
+    = note: `#[warn(unreachable_code)]` on by default
+
+warning: unused variable: `result_1`
+   --> ac_2023_12/src/main.rs:107:9
+    |
+107 |     let result_1 = input
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_result_1`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: `ac_2023_12` (bin "ac_2023_12") generated 2 warnings (run `cargo fix --bin "ac_2023_12"` to apply 1 suggestion)
+    Finished release [optimized] target(s) in 0.30s
+     Running `target/release/ac_2023_12`
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: ".#.???#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.???#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..??#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#??#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.?#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.##?#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.##.#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.####???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.####.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#####??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#####.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.######?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.######.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#######????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#######.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.########???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.########.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#########??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#########.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    9,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.##########?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.##########.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    10,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#############?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#############..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    13,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.##############.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    14,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.##???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.##.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.###??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.###.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.####?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.####.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#####????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#####.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.######???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.######.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.########?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.########.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.###########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.###########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    11,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.############.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    12,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######..##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######.###?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######.###..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######.####.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######..##..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#.#######..###.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..##??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..##.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..###?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..###.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..####????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..####.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#####???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#####.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..######??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..######.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#######?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#######.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..##########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..##########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    10,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..###########.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    11,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#######.##..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##.#..#######.###.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...?#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#?#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..###???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..###.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..####??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..####.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#####?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#####.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..######????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..######.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#######???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#######.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..########??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..########.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#########?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#########.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    9,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..############?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..############..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    12,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#############.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    13,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.##??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.##.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.###?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.###.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.####????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.####.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#####???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#####.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.######??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.######.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#######?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#######.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.##########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.##########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    10,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.###########.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    11,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#######.##..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##..#.#######.###.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...##???????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...##.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...###??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...###.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...####?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...####.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...#####????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...#####.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...######???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...######.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...#######??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...#######.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...########?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...########.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...###########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...###########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    11,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##...############.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    12,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....##??????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....##.?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....###?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....###.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....####????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....####.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#####???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#####.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....######??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....######.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#######?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#######.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....##########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....##########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    10,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....###########.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    11,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.#?????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.#.????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.##????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.##.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.###???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.###.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.####??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.####.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.#####?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.#####.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.########?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.########..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.#########.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    9,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..#????##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..#.???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..##???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..##.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..###??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..###.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..####?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..####.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..#######?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..#######..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#..########.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    8,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...#???##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...#.??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...##??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...##.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...###?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...###.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...######?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...######..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#...#######.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    7,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....#??##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....#.?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....##?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....##.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....#####?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....#####..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#....######.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    6,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#......?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....#?##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....#.##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....####?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....####..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.....#####.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    5,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.......##?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#......###?.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#......###..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#......####.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    4,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.......##..?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    2,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:67] self = Spring {
+    pattern: "##....#.......###.?",
+    constraints: [
+        2,
+        1,
+        7,
+        3,
+        1,
+    ],
+}
+[ac_2023_12/src/main.rs:67] &beginning = [
+    2,
+    1,
+    3,
+]
+[ac_2023_12/src/main.rs:67] &end = []
+[ac_2023_12/src/main.rs:94] checks = 107
+[ac_2023_12/src/main.rs:94] num_variants = 4
+thread 'main' panicked at '', ac_2023_12/src/main.rs:113:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
