@@ -218,71 +218,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2022_01"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_02"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_03"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_04"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_05"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_06"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_07"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_08"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
-]
-
-[[package]]
-name = "ac_2022_09"
+name = "ac_2022_1"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -358,7 +294,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2023_01"
+name = "ac_2022_2"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -366,7 +302,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2023_02"
+name = "ac_2022_3"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -374,16 +310,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2023_03"
-version = "0.1.0"
-dependencies = [
- "advent_of_code_util",
- "itertools",
- "regex",
-]
-
-[[package]]
-name = "ac_2023_04"
+name = "ac_2022_4"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -391,7 +318,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2023_06"
+name = "ac_2022_5"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -399,7 +326,39 @@ dependencies = [
 ]
 
 [[package]]
-name = "ac_2023_07"
+name = "ac_2022_6"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2022_7"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2022_8"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2022_9"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2023_1"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
@@ -439,7 +398,48 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2023_2"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2023_3"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+ "regex",
+]
+
+[[package]]
+name = "ac_2023_4"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
 name = "ac_2023_5"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2023_6"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2023_7"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
