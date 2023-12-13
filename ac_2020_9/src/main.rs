@@ -46,6 +46,13 @@ fn get_program_output(input_file: &str, preamble_size: usize) -> (usize, usize) 
     (first_invalid_num, sum_contiguous_set)
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (part_1_output, part_2_output) = get_program_output(&file_path, 25);
+    println!("Part 1 output: {}", part_1_output);
+    println!("Part 2 output: {}", part_2_output);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -57,11 +64,4 @@ mod tests {
         assert_eq!(part_1_output, 127);
         assert_eq!(part_2_output, 62);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (part_1_output, part_2_output) = get_program_output(&file_path, 25);
-    println!("Part 1 output: {}", part_1_output);
-    println!("Part 2 output: {}", part_2_output);
 }

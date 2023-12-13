@@ -102,6 +102,38 @@ impl Diagram {
     }
 }
 
+fn main() {
+    let lines = read_lines("ac_2021_5/input")
+        .iter()
+        .map(|line| Line::from_str(line))
+        .collect::<Vec<Line>>();
+    let board_width = lines
+        .iter()
+        .map(|line| std::cmp::max(line.to.x, line.from.x))
+        .max()
+        .unwrap()
+        + 1;
+    let board_height = lines
+        .iter()
+        .map(|line| std::cmp::max(line.to.y, line.from.y))
+        .max()
+        .unwrap()
+        + 1;
+    let mut board = Diagram::with_size(board_width, board_height);
+
+    for line in lines.iter().filter(|line| !line.is_diagonal()) {
+        board.add_line(line);
+    }
+
+    println!("Overlaps without diagonals: {:?}", board.num_overlaps());
+
+    let mut part_2_board = Diagram::with_size(board_width, board_height);
+    for line in lines {
+        part_2_board.add_line(&line);
+    }
+    println!("Overlaps with diagonals: {:?}", part_2_board.num_overlaps());
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -133,36 +165,4 @@ mod tests {
             assert!(!line.is_diagonal());
         }
     }
-}
-
-fn main() {
-    let lines = read_lines("ac_2021_5/input")
-        .iter()
-        .map(|line| Line::from_str(line))
-        .collect::<Vec<Line>>();
-    let board_width = lines
-        .iter()
-        .map(|line| std::cmp::max(line.to.x, line.from.x))
-        .max()
-        .unwrap()
-        + 1;
-    let board_height = lines
-        .iter()
-        .map(|line| std::cmp::max(line.to.y, line.from.y))
-        .max()
-        .unwrap()
-        + 1;
-    let mut board = Diagram::with_size(board_width, board_height);
-
-    for line in lines.iter().filter(|line| !line.is_diagonal()) {
-        board.add_line(line);
-    }
-
-    println!("Overlaps without diagonals: {:?}", board.num_overlaps());
-
-    let mut part_2_board = Diagram::with_size(board_width, board_height);
-    for line in lines {
-        part_2_board.add_line(&line);
-    }
-    println!("Overlaps with diagonals: {:?}", part_2_board.num_overlaps());
 }

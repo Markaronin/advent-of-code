@@ -26,6 +26,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     (part_1_output.unwrap(), part_2_output.unwrap())
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (part_1_output, part_2_output) = get_program_output(&file_path);
+    println!("2 entries that sum to 2020 multiplied: {}", part_1_output);
+    println!("3 entries that sum to 2020 multiplied: {}", part_2_output);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -37,11 +44,4 @@ mod tests {
         assert_eq!(part_1_output, 514579);
         assert_eq!(part_2_output, 241861950);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (part_1_output, part_2_output) = get_program_output(&file_path);
-    println!("2 entries that sum to 2020 multiplied: {}", part_1_output);
-    println!("3 entries that sum to 2020 multiplied: {}", part_2_output);
 }

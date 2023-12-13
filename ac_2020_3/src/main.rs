@@ -40,6 +40,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     (hit_count_1, hit_count_product)
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (part_1_output, part_2_output) = get_program_output(&file_path);
+    println!("Part 1 output: {}", part_1_output);
+    println!("Part 2 output: {}", part_2_output);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -51,11 +58,4 @@ mod tests {
         assert_eq!(part_1_output, 7);
         assert_eq!(part_2_output, 336);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (part_1_output, part_2_output) = get_program_output(&file_path);
-    println!("Part 1 output: {}", part_1_output);
-    println!("Part 2 output: {}", part_2_output);
 }

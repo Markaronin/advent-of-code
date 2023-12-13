@@ -123,20 +123,6 @@ fn get_program_output(
     (result_1, result_2)
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn main() {
-        let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
-        let (part_1_output, part_2_output) =
-            get_program_output(&file_path, 10, crate::Coordinate { x: 20, y: 20 });
-        assert_eq!(part_1_output, 26);
-        assert_eq!(part_2_output, 56000011);
-    }
-}
-
 fn main() {
     let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
     let (part_1_output, part_2_output) = get_program_output(
@@ -149,4 +135,18 @@ fn main() {
     );
     println!("Part 1 output: {}", part_1_output);
     println!("Part 2 output: {}", part_2_output);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn main() {
+        let file_path = format!("{}/testinput", env!("CARGO_MANIFEST_DIR"));
+        let (part_1_output, part_2_output) =
+            get_program_output(&file_path, 10, crate::Coordinate { x: 20, y: 20 });
+        assert_eq!(part_1_output, 26);
+        assert_eq!(part_2_output, 56000011);
+    }
 }

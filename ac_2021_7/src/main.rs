@@ -45,6 +45,13 @@ fn get_minimum_fuel(input_file: &str) -> (u32, u32) {
     (min_fuel_part_1, min_fuel_part_2)
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (min_fuel_part_1, min_fuel_part_2) = get_minimum_fuel(&file_path);
+    println!("Minimum fuel cost, part 1: {:}", min_fuel_part_1);
+    println!("Minimum fuel cost, part 2: {:}", min_fuel_part_2);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -56,11 +63,4 @@ mod tests {
         assert_eq!(min_fuel_part_1, 37);
         assert_eq!(min_fuel_part_2, 168);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (min_fuel_part_1, min_fuel_part_2) = get_minimum_fuel(&file_path);
-    println!("Minimum fuel cost, part 1: {:}", min_fuel_part_1);
-    println!("Minimum fuel cost, part 2: {:}", min_fuel_part_2);
 }

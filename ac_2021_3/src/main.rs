@@ -37,67 +37,6 @@ fn most_common_bit_with_tiebreaker(
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use crate::*;
-
-    fn slice_to_binary_vector(strs: &[&str]) -> Vec<usize> {
-        strs.iter()
-            .map(|line| usize::from_str_radix(line, 2).unwrap())
-            .collect::<Vec<usize>>()
-    }
-
-    #[test]
-    fn one_bit() {
-        assert_eq!(most_common_bit(&slice_to_binary_vector(&["0"]), 0), false);
-
-        assert_eq!(most_common_bit(&slice_to_binary_vector(&["1"]), 0), true);
-
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["1", "0"]), 0),
-            false
-        );
-
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["0", "1", "1"]), 0),
-            true
-        );
-
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["0", "0", "1"]), 0),
-            false
-        );
-    }
-
-    #[test]
-    fn two_bits() {
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["00", "01", "11"]), 0),
-            true
-        );
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["00", "11"]), 0),
-            false
-        );
-        assert_eq!(
-            most_common_bit(&slice_to_binary_vector(&["00", "01", "11"]), 1),
-            false
-        );
-    }
-
-    #[test]
-    fn tiebreaker() {
-        assert_eq!(
-            most_common_bit_with_tiebreaker(&slice_to_binary_vector(&["00", "11"]), 0, false),
-            false
-        );
-        assert_eq!(
-            most_common_bit_with_tiebreaker(&slice_to_binary_vector(&["00", "11"]), 0, true),
-            true
-        );
-    }
-}
-
 fn main() {
     let lines = read_lines("ac_2021_3/input");
     let binary_input = to_binary_vector(&lines);
@@ -160,4 +99,65 @@ fn main() {
         "Life support rating: {}",
         oxygen_generator_rating * co2_scrubber_rating
     );
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::*;
+
+    fn slice_to_binary_vector(strs: &[&str]) -> Vec<usize> {
+        strs.iter()
+            .map(|line| usize::from_str_radix(line, 2).unwrap())
+            .collect::<Vec<usize>>()
+    }
+
+    #[test]
+    fn one_bit() {
+        assert_eq!(most_common_bit(&slice_to_binary_vector(&["0"]), 0), false);
+
+        assert_eq!(most_common_bit(&slice_to_binary_vector(&["1"]), 0), true);
+
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["1", "0"]), 0),
+            false
+        );
+
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["0", "1", "1"]), 0),
+            true
+        );
+
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["0", "0", "1"]), 0),
+            false
+        );
+    }
+
+    #[test]
+    fn two_bits() {
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["00", "01", "11"]), 0),
+            true
+        );
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["00", "11"]), 0),
+            false
+        );
+        assert_eq!(
+            most_common_bit(&slice_to_binary_vector(&["00", "01", "11"]), 1),
+            false
+        );
+    }
+
+    #[test]
+    fn tiebreaker() {
+        assert_eq!(
+            most_common_bit_with_tiebreaker(&slice_to_binary_vector(&["00", "11"]), 0, false),
+            false
+        );
+        assert_eq!(
+            most_common_bit_with_tiebreaker(&slice_to_binary_vector(&["00", "11"]), 0, true),
+            true
+        );
+    }
 }

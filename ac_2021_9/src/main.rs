@@ -123,6 +123,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     (risk_levels_sum, basin_size_product)
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (risk_levels_sum, basin_size_product) = get_program_output(&file_path);
+    println!("Sum of risk levels: {}", risk_levels_sum);
+    println!("Basin size product: {}", basin_size_product);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -134,11 +141,4 @@ mod tests {
         assert_eq!(risk_levels_sum, 15);
         assert_eq!(basin_size_product, 1134);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (risk_levels_sum, basin_size_product) = get_program_output(&file_path);
-    println!("Sum of risk levels: {}", risk_levels_sum);
-    println!("Basin size product: {}", basin_size_product);
 }

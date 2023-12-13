@@ -63,6 +63,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     )
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (part_1_output, part_2_output) = get_program_output(&file_path);
+    println!("Part 1 output: {}", part_1_output);
+    println!("Part 2 output: {}", part_2_output);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -73,11 +80,4 @@ mod tests {
         let (part_1_output, _) = get_program_output(&file_path);
         assert_eq!(part_1_output, 820);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (part_1_output, part_2_output) = get_program_output(&file_path);
-    println!("Part 1 output: {}", part_1_output);
-    println!("Part 2 output: {}", part_2_output);
 }
