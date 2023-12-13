@@ -1,5 +1,5 @@
 #![allow(unused_variables, unused_mut)]
-use std::collections::HashMap;
+use std::collections::{hash_map::Entry, HashMap};
 
 use advent_of_code_util::{abs_diff, parse::read_lines};
 
@@ -26,14 +26,11 @@ impl ConnectionRouteFinder {
         remaining_adapters: Vec<usize>,
     ) -> usize {
         let key = (current_jolts, remaining_adapters.clone());
-        if self.cache.contains_key(&key) {
-            println!("Cache hit");
-            self.cache.get(&key).unwrap().clone()
-        } else {
+        if let Entry::Vacant(e) = self.cache.entry(key.clone()) {
             let val = {
                 if current_jolts == self.target_joltage {
                     1
-                } else if remaining_adapters.len() == 0 || {
+                } else if remaining_adapters.is_empty() || {
                     let mut max_diff = usize::MAX;
                     let prev = remaining_adapters[0];
                     for i in 0..remaining_adapters.len() - 1 {}
@@ -64,6 +61,9 @@ impl ConnectionRouteFinder {
                 panic!();
             };
             val
+        } else {
+            println!("Cache hit");
+            *self.cache.get(&key).unwrap()
         }
     }
 
@@ -76,9 +76,9 @@ impl ConnectionRouteFinder {
         current_jolts: usize,
         remaining_adapters: Vec<usize>,
     ) -> Option<(usize, usize)> {
-        if remaining_adapters.len() == 0 && current_jolts == self.target_joltage {
+        if remaining_adapters.is_empty() && current_jolts == self.target_joltage {
             Some((0, 0))
-        } else if remaining_adapters.len() == 0 {
+        } else if remaining_adapters.is_empty() {
             None
         } else {
             remaining_adapters

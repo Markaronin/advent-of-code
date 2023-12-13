@@ -16,7 +16,7 @@ enum Space {
     Empty,
 }
 impl Space {
-    pub fn to_string(&self) -> char {
+    pub fn to_string(self) -> char {
         match self {
             Self::Empty => '.',
             Self::Sand => 'O',
@@ -33,8 +33,8 @@ fn print_grid(
     max_y: &usize,
 ) {
     for y in *min_y..=*max_y {
-        for x in *min_x..=*max_x {
-            print!("{}", grid[x][y].to_string());
+        for col in grid.iter().take(*max_x + 1).skip(*min_x) {
+            print!("{}", col[y].to_string());
         }
         println!();
     }
@@ -43,7 +43,11 @@ fn print_grid(
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let rocks = read_lines(input_file)
         .into_iter()
-        .map(|line| line.split(" -> ").map(Coordinate::from_str).collect_vec())
+        .map(|line| {
+            line.split(" -> ")
+                .map(|s| s.parse::<Coordinate>().unwrap())
+                .collect_vec()
+        })
         .flat_map(get_all_points)
         .unique()
         .collect_vec();
@@ -96,8 +100,8 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         for rock in rocks.iter() {
             grid[rock.x][rock.y] = Space::Rock;
         }
-        for x in 0..1000 {
-            grid[x][max_y] = Space::Rock;
+        for col in &mut grid {
+            col[max_y] = Space::Rock;
         }
 
         print_grid(&grid, &min_x, &max_x, &min_y, &max_y);

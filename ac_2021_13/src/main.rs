@@ -96,7 +96,7 @@ fn get_program_output(input_file: &str) -> (usize, &str) {
     let input = read_blocks(input_file);
     let coordinates = input[0]
         .iter()
-        .map(|coord_string| Coordinate::from_str(coord_string))
+        .map(|coord_string| coord_string.parse().unwrap())
         .collect();
     let mut folds = input[1]
         .iter()

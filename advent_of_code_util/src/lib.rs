@@ -1,5 +1,5 @@
 use itertools::Itertools;
-use std::collections::BTreeSet;
+use std::{collections::BTreeSet, str::FromStr};
 
 pub mod matrix;
 pub mod parse;
@@ -13,39 +13,42 @@ pub struct Coordinate {
     pub x: usize,
     pub y: usize,
 }
-impl Coordinate {
-    pub fn from_str(string: &str) -> Self {
-        let (x, y) = string
+impl FromStr for Coordinate {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let (x, y) = s
             .split(',')
             .map(|num| num.parse::<usize>().unwrap())
             .collect_tuple::<(usize, usize)>()
             .unwrap();
-        Coordinate { x, y }
+        Ok(Coordinate { x, y })
     }
-
+}
+impl Coordinate {
     /**
     assumes that from and to are either on a horizontal or vertical line
     */
     pub fn get_points_between_vertices(&self, to: &Coordinate) -> Vec<Coordinate> {
         assert!(self.x == to.x || self.y == to.y);
-        if self.x == to.x {
-            if self.y < to.y {
-                (self.y..=to.y)
-                    .map(|y| Coordinate { x: self.x, y })
-                    .collect()
-            } else {
-                (to.y..=self.y)
-                    .map(|y| Coordinate { x: self.x, y })
-                    .collect()
+        match self.x.cmp(&to.x) {
+            std::cmp::Ordering::Less => (self.x..=to.x)
+                .map(|x| Coordinate { x, y: self.y })
+                .collect(),
+            std::cmp::Ordering::Equal => {
+                if self.y < to.y {
+                    (self.y..=to.y)
+                        .map(|y| Coordinate { x: self.x, y })
+                        .collect()
+                } else {
+                    (to.y..=self.y)
+                        .map(|y| Coordinate { x: self.x, y })
+                        .collect()
+                }
             }
-        } else if self.x < to.x {
-            (self.x..=to.x)
+            std::cmp::Ordering::Greater => (to.x..=self.x)
                 .map(|x| Coordinate { x, y: self.y })
-                .collect()
-        } else {
-            (to.x..=self.x)
-                .map(|x| Coordinate { x, y: self.y })
-                .collect()
+                .collect(),
         }
     }
 

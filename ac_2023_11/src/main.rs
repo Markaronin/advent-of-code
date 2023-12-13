@@ -4,7 +4,7 @@ use itertools::Itertools;
 /**
  * expansion = how many resulting empty columns from one empty column (so 1 means it'd be unchanged)
  */
-fn get_coordinates_with_expansion(input: &Vec<Vec<char>>, expansion: usize) -> Vec<Coordinate> {
+fn get_coordinates_with_expansion(input: &[Vec<char>], expansion: usize) -> Vec<Coordinate> {
     let expanded_rows: Vec<usize> = input
         .iter()
         .enumerate()
@@ -16,7 +16,7 @@ fn get_coordinates_with_expansion(input: &Vec<Vec<char>>, expansion: usize) -> V
             }
         })
         .collect_vec();
-    let expanded_cols: Vec<usize> = transpose2(input.clone())
+    let expanded_cols: Vec<usize> = transpose2(input.clone().to_vec())
         .iter()
         .enumerate()
         .filter_map(|(x, col)| {

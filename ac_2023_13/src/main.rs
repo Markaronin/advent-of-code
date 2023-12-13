@@ -11,7 +11,7 @@ fn is_horizontal_reflection(block: &Vec<Vec<char>>, y: usize) -> bool {
     }
     true
 }
-fn is_vertical_reflection(block: &Vec<Vec<char>>, x: usize) -> bool {
+fn is_vertical_reflection(block: &[Vec<char>], x: usize) -> bool {
     let width = block[0].len();
     let num_reflectable_units = (x + 1).min(width - (x + 1));
     for x_offset in 0..num_reflectable_units {

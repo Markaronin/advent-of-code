@@ -175,8 +175,8 @@ impl Rocks {
     }
     fn air_jet(&mut self) {
         for x in match self.jet_pattern[self.air_jet_index] {
-            JetDirection::Left => 1..=6,
-            JetDirection::Right => 5..=0,
+            JetDirection::Left => (1..=6).collect_vec(),
+            JetDirection::Right => (0..=5).rev().collect_vec(),
         } {
             for y in self.bottom_edge_of_falling_rock.unwrap()
                 ..=self.bottom_edge_of_falling_rock.unwrap() + 4

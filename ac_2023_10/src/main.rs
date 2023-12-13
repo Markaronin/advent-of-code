@@ -110,18 +110,15 @@ fn is_enclosed(mut ray: VecDeque<Space>) -> bool {
         if ray[0] == Space::UpAndDown {
             ray.pop_front().unwrap();
             walls += 1;
-        } else if ray[0] == Space::RightAndDown && ray[1] == Space::UpAndLeft {
+        } else if (ray[0] == Space::RightAndDown && ray[1] == Space::UpAndLeft)
+            || (ray[0] == Space::UpAndRight && ray[1] == Space::LeftAndDown)
+        {
             ray.pop_front().unwrap();
             ray.pop_front().unwrap();
             walls += 1;
-        } else if ray[0] == Space::UpAndRight && ray[1] == Space::LeftAndDown {
-            ray.pop_front().unwrap();
-            ray.pop_front().unwrap();
-            walls += 1;
-        } else if ray[0] == Space::UpAndRight && ray[1] == Space::UpAndLeft {
-            ray.pop_front().unwrap();
-            ray.pop_front().unwrap();
-        } else if ray[0] == Space::RightAndDown && ray[1] == Space::LeftAndDown {
+        } else if ray[0] == Space::UpAndRight && ray[1] == Space::UpAndLeft
+            || (ray[0] == Space::RightAndDown && ray[1] == Space::LeftAndDown)
+        {
             ray.pop_front().unwrap();
             ray.pop_front().unwrap();
         }

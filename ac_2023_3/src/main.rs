@@ -8,15 +8,12 @@ fn is_part_number(grid: &Vec<String>, line_number: usize, start: usize, end: usi
     let start_y = line_number.max(1) - 1;
     let end_y = (line_number + 1).min(grid[0].len() - 1);
 
-    for y in start_y..=end_y {
-        let chars = grid[y].chars().collect_vec();
-        for x in start_x..=end_x {
-            if chars[x] != '.' && !chars[x].is_numeric() {
-                return true;
-            }
-        }
-    }
-    false
+    grid.iter().take(end_y + 1).skip(start_y).any(|row| {
+        row.chars()
+            .take(end_x + 1)
+            .skip(start_x)
+            .any(|c| c != '.' && !c.is_numeric())
+    })
 }
 
 struct NumberAndPosition {
@@ -31,7 +28,7 @@ impl NumberAndPosition {
     }
 }
 
-fn get_all_numbers_and_positions(grid: &Vec<String>) -> Vec<NumberAndPosition> {
+fn get_all_numbers_and_positions(grid: &[String]) -> Vec<NumberAndPosition> {
     let mut result = Vec::new();
     for (line_number, line) in grid.iter().enumerate() {
         // Create a regular expression pattern to match numbers with one or more digits

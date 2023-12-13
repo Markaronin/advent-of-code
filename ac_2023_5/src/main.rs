@@ -27,7 +27,7 @@ impl MapRange {
     }
 }
 
-fn get_min_seed_location(seeds: &Vec<usize>, maps: &Vec<Vec<MapRange>>) -> usize {
+fn get_min_seed_location(seeds: &[usize], maps: &Vec<Vec<MapRange>>) -> usize {
     seeds
         .iter()
         .map(|seed| {

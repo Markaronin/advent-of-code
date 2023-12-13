@@ -46,19 +46,15 @@ impl Iterator for LineIntoIterator {
     type Item = Coordinate;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let incr_x: i64 = if self.line.from.x > self.line.to.x {
-            -1
-        } else if self.line.from.x < self.line.to.x {
-            1
-        } else {
-            0
+        let incr_x = match self.line.from.x.cmp(&self.line.to.x) {
+            std::cmp::Ordering::Less => 1,
+            std::cmp::Ordering::Equal => 0,
+            std::cmp::Ordering::Greater => -1,
         };
-        let incr_y: i64 = if self.line.from.y > self.line.to.y {
-            -1
-        } else if self.line.from.y < self.line.to.y {
-            1
-        } else {
-            0
+        let incr_y = match self.line.from.y.cmp(&self.line.to.y) {
+            std::cmp::Ordering::Less => 1,
+            std::cmp::Ordering::Equal => 0,
+            std::cmp::Ordering::Greater => -1,
         };
         let prev_coordinate = Coordinate {
             x: (self.current_coordinate.x as i64 - incr_x) as usize,

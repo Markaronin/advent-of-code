@@ -14,7 +14,7 @@ struct RawDisplay {
 }
 
 impl RawDisplay {
-    fn from_line(line: &String) -> Self {
+    fn from_line(line: &str) -> Self {
         let first_split = line
             .split('|')
             .map(|item| item.to_string())
@@ -169,8 +169,8 @@ impl RawDisplay {
 fn main() {
     let lines = read_lines("ac_2021_8/input");
     let displays = lines
-        .iter()
-        .map(RawDisplay::from_line)
+        .into_iter()
+        .map(|line| RawDisplay::from_line(&line))
         .collect::<Vec<RawDisplay>>();
     println!(
         "Number of unique outputs: {:?}",

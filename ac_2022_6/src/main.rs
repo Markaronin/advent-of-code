@@ -1,7 +1,7 @@
 use advent_of_code_util::{base_aoc, parse::read_lines};
 use itertools::Itertools;
 
-fn find_packet_start(input: &Vec<char>, num_unique: usize) -> usize {
+fn find_packet_start(input: &[char], num_unique: usize) -> usize {
     input
         .windows(num_unique)
         .find_position(|window| window.iter().unique().count() == window.len())

@@ -31,13 +31,7 @@ impl Ord for Packet {
                     }
                 }
 
-                if v1.len() < v2.len() {
-                    Ordering::Less
-                } else if v1.len() > v2.len() {
-                    Ordering::Greater
-                } else {
-                    Ordering::Equal
-                }
+                v1.len().cmp(&v2.len())
             }
         }
     }

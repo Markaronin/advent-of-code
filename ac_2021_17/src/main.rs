@@ -64,10 +64,10 @@ impl MovingCoordinate {
     fn step(&mut self) {
         self.position.x += self.velocity.x;
         self.position.y += self.velocity.y;
-        if self.velocity.x > 0 {
-            self.velocity.x -= 1;
-        } else if self.velocity.x < 0 {
-            self.velocity.x += 1;
+        match self.velocity.x.cmp(&0) {
+            std::cmp::Ordering::Less => self.velocity.x += 1,
+            std::cmp::Ordering::Equal => {}
+            std::cmp::Ordering::Greater => self.velocity.x -= 1,
         }
         self.velocity.y -= 1;
     }
@@ -119,12 +119,9 @@ fn get_program_output(input_file: &str) -> (isize, isize) {
                     y: starting_y_velocity,
                 },
             };
-            match mc.highest_point(&target_area) {
-                Ok(val) => {
-                    num_intercepts += 1;
-                    highest_so_far = std::cmp::max(highest_so_far, val);
-                }
-                Err(_) => {}
+            if let Ok(val) = mc.highest_point(&target_area) {
+                num_intercepts += 1;
+                highest_so_far = std::cmp::max(highest_so_far, val);
             }
         }
     }

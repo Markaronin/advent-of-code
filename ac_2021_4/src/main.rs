@@ -55,11 +55,11 @@ fn bingo_board_from_chunk(chunk: Vec<String>) -> BingoBoard {
         .map(|line| line.split_whitespace())
         .map(|split_line| split_line.map(|num| num.parse::<u32>().unwrap()));
     let mut board_values = [[0; 5]; 5];
-    for x in 0..5 {
+    for empty_col in board_values.iter_mut() {
         let mut current_row = split_chunk.next().unwrap();
-        for y in 0..5 {
+        for empty_cell in empty_col.iter_mut() {
             let current_col = current_row.next().unwrap();
-            board_values[x][y] = current_col;
+            *empty_cell = current_col;
         }
     }
     BingoBoard {

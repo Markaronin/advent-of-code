@@ -1,6 +1,6 @@
 use advent_of_code_util::{base_aoc, parse::read_lines};
 
-fn is_tree_visible(grid: &Vec<Vec<u32>>, x: usize, y: usize) -> bool {
+fn is_tree_visible(grid: &[Vec<u32>], x: usize, y: usize) -> bool {
     let mut max_left = -1;
     let mut max_right = -1;
     let mut max_up = -1;
@@ -12,11 +12,11 @@ fn is_tree_visible(grid: &Vec<Vec<u32>>, x: usize, y: usize) -> bool {
     for inner_x in x + 1..grid[0].len() {
         max_right = std::cmp::max(max_right, grid[y][inner_x] as i32);
     }
-    for inner_y in 0..y {
-        max_up = std::cmp::max(max_up, grid[inner_y][x] as i32);
+    for row in grid.iter().take(y) {
+        max_up = std::cmp::max(max_up, row[x] as i32);
     }
-    for inner_y in y + 1..grid.len() {
-        max_down = std::cmp::max(max_down, grid[inner_y][x] as i32);
+    for row in grid.iter().skip(y + 1) {
+        max_down = std::cmp::max(max_down, row[x] as i32);
     }
 
     let tree_height = grid[y][x] as i32;
