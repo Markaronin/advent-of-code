@@ -1,37 +1,37 @@
-use advent_of_code_util::parse::{read_blocks, read_lines, split_block_on_whitespace};
+use advent_of_code_util::parse::{read_blocks, split_block_on_whitespace};
 use itertools::Itertools;
 use regex::Regex;
 
 fn does_match_year(val: &str, year_min: usize, year_max: usize) -> bool {
     let year_re = Regex::new("^[0-9]+$").unwrap();
-    year_re.is_match(&val) && {
+    year_re.is_match(val) && {
         let parsed_year = val.parse::<usize>().unwrap();
         parsed_year >= year_min && parsed_year <= year_max
     }
 }
 fn is_valid_height(height: &str) -> bool {
     let height_regex = Regex::new("^[0-9]+(in|cm)$").unwrap();
-    height_regex.is_match(&height) && {
+    height_regex.is_match(height) && {
         let mut chars = height.chars();
         let units = [chars.next_back().unwrap(), chars.next_back().unwrap()]
             .iter()
             .rev()
             .collect::<String>();
         let amount = chars.collect::<String>().parse::<usize>().unwrap();
-        (units == "cm" && amount <= 193 && amount >= 150)
-            || (units == "in" && amount <= 76 && amount >= 59)
+        (units == "cm" && (150..=193).contains(&amount))
+            || (units == "in" && (59..=76).contains(&amount))
     }
 }
 fn is_valid_hair_color(hair_color: &str) -> bool {
     let hair_color_regex = Regex::new("^#[0-9a-f]{6}$").unwrap();
-    hair_color_regex.is_match(&hair_color)
+    hair_color_regex.is_match(hair_color)
 }
 fn is_valid_eye_color(eye_color: &str) -> bool {
     ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].contains(&eye_color)
 }
 fn is_valid_pid(pid: &str) -> bool {
     let pid_regex = Regex::new("^[0-9]{9}$").unwrap();
-    pid_regex.is_match(&pid)
+    pid_regex.is_match(pid)
 }
 
 #[derive(Default, Debug)]
@@ -99,7 +99,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_blocks(input_file);
     let passports = input
         .into_iter()
-        .map(|block| Passport::from_block(block))
+        .map(Passport::from_block)
         .collect::<Vec<Passport>>();
     (
         passports

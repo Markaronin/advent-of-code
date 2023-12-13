@@ -56,12 +56,10 @@ fn split_by_toplevel_comma(string: &str) -> (String, String) {
             ',' => {
                 if current_depth == 0 {
                     on_first = false;
+                } else if on_first {
+                    first.push(c)
                 } else {
-                    if on_first {
-                        first.push(c)
-                    } else {
-                        last.push(c)
-                    }
+                    last.push(c)
                 }
             }
             _ => {

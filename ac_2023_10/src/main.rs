@@ -1,10 +1,6 @@
 use std::collections::{BTreeSet, VecDeque};
 
-use advent_of_code_util::{
-    base_aoc,
-    parse::{read_lines, read_lines_of_chars},
-    Coordinate,
-};
+use advent_of_code_util::{base_aoc, parse::read_lines_of_chars, Coordinate};
 use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -107,12 +103,9 @@ impl Space {
 type Grid = Vec<Vec<Space>>;
 
 fn is_enclosed(mut ray: VecDeque<Space>) -> bool {
-    ray = ray
-        .into_iter()
-        .filter(|s| *s != Space::Empty && *s != Space::LeftAndRight)
-        .collect();
+    ray.retain(|s| *s != Space::Empty && *s != Space::LeftAndRight);
     let mut walls = 0;
-    while ray.len() > 0 {
+    while !ray.is_empty() {
         // dbg!(&ray);
         if ray[0] == Space::UpAndDown {
             ray.pop_front().unwrap();
@@ -139,7 +132,7 @@ fn is_enclosed(mut ray: VecDeque<Space>) -> bool {
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines_of_chars(input_file)
         .into_iter()
-        .map(|line| line.into_iter().map(|c| Space::from_char(c)).collect_vec())
+        .map(|line| line.into_iter().map(Space::from_char).collect_vec())
         .collect_vec();
 
     let starting_position = input
@@ -195,10 +188,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     for y in 0..part_2_grid.len() {
         for x in 0..part_2_grid[0].len() {
             if part_2_grid[y][x] == Space::Empty {
-                let ray = part_2_grid[y][x..]
-                    .iter()
-                    .map(|s| *s)
-                    .collect::<VecDeque<_>>();
+                let ray = part_2_grid[y][x..].iter().copied().collect::<VecDeque<_>>();
                 if is_enclosed(ray) {
                     num_enclosed_spaces += 1;
                 }

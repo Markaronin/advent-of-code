@@ -12,7 +12,7 @@ fn bit_at_position(number: usize, position: usize) -> bool {
 fn get_num_ones(numbers: &Vec<usize>, position: usize) -> usize {
     numbers
         .iter()
-        .map(|number| bit_at_position(number.clone(), position))
+        .map(|number| bit_at_position(*number, position))
         .filter(|bit| *bit)
         .count()
 }
@@ -137,7 +137,7 @@ fn main() {
             numbers = numbers
                 .iter()
                 .filter(|number| bit_at_position(**number, position) == mcb)
-                .map(|number| number.clone())
+                .copied()
                 .collect();
         }
         numbers[0]
@@ -151,7 +151,7 @@ fn main() {
             numbers = numbers
                 .iter()
                 .filter(|number| bit_at_position(**number, position) != mcb)
-                .map(|number| number.clone())
+                .copied()
                 .collect();
         }
         numbers[0]

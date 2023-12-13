@@ -7,7 +7,7 @@ struct Policy {
 }
 impl Policy {
     fn from_str(string: &str) -> Self {
-        let (range_string, character) = string.split(" ").collect_tuple().unwrap();
+        let (range_string, character) = string.split(' ').collect_tuple().unwrap();
         Policy {
             range: range_string
                 .split('-')

@@ -4,8 +4,7 @@ use itertools::Itertools;
 fn get_all_points(vertices: Vec<Coordinate>) -> Vec<Coordinate> {
     vertices
         .windows(2)
-        .map(|points| points[0].get_points_between_vertices(&points[1]))
-        .flatten()
+        .flat_map(|points| points[0].get_points_between_vertices(&points[1]))
         .unique()
         .collect_vec()
 }
@@ -37,7 +36,7 @@ fn print_grid(
         for x in *min_x..=*max_x {
             print!("{}", grid[x][y].to_string());
         }
-        print!("\n");
+        println!();
     }
 }
 
@@ -45,8 +44,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let rocks = read_lines(input_file)
         .into_iter()
         .map(|line| line.split(" -> ").map(Coordinate::from_str).collect_vec())
-        .map(get_all_points)
-        .flatten()
+        .flat_map(get_all_points)
         .unique()
         .collect_vec();
 
@@ -67,7 +65,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 
         print_grid(&grid, &min_x, &max_x, &min_y, &max_y);
 
-        let mut falling_sand = sand_spawn.clone();
+        let mut falling_sand = sand_spawn;
         while falling_sand.is_within_bounds(min_x, max_x, min_y, max_y) {
             if grid[falling_sand.x][falling_sand.y + 1] == Space::Empty {
                 falling_sand.y += 1;
@@ -79,7 +77,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                 falling_sand.x += 1;
             } else {
                 grid[falling_sand.x][falling_sand.y] = Space::Sand;
-                falling_sand = sand_spawn.clone();
+                falling_sand = sand_spawn;
             }
         }
 
@@ -104,7 +102,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 
         print_grid(&grid, &min_x, &max_x, &min_y, &max_y);
 
-        let mut falling_sand = sand_spawn.clone();
+        let mut falling_sand = sand_spawn;
         while grid[sand_spawn.x][sand_spawn.y] != Space::Sand {
             if grid[falling_sand.x][falling_sand.y + 1] == Space::Empty {
                 falling_sand.y += 1;
@@ -116,7 +114,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                 falling_sand.x += 1;
             } else {
                 grid[falling_sand.x][falling_sand.y] = Space::Sand;
-                falling_sand = sand_spawn.clone();
+                falling_sand = sand_spawn;
             }
         }
 

@@ -7,7 +7,7 @@ struct Coordinate {
 }
 impl Coordinate {
     fn from_str(str: &str) -> Self {
-        let separated = str.split(",").collect::<Vec<&str>>();
+        let separated = str.split(',').collect::<Vec<&str>>();
         Coordinate {
             x: separated[0].parse::<usize>().unwrap(),
             y: separated[1].parse::<usize>().unwrap(),
@@ -116,21 +116,21 @@ mod tests {
                 to: Coordinate { x: 0, y: 1 },
             };
 
-            assert_eq!(line.is_diagonal(), false);
+            assert!(!line.is_diagonal());
 
             let line = Line {
                 from: Coordinate { x: 0, y: 0 },
                 to: Coordinate { x: 1, y: 1 },
             };
 
-            assert_eq!(line.is_diagonal(), true);
+            assert!(line.is_diagonal());
 
             let line = Line {
                 from: Coordinate { x: 0, y: 0 },
                 to: Coordinate { x: 1, y: 0 },
             };
 
-            assert_eq!(line.is_diagonal(), false);
+            assert!(!line.is_diagonal());
         }
     }
 }

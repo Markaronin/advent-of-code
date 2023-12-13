@@ -20,15 +20,10 @@ fn is_tree_visible(grid: &Vec<Vec<u32>>, x: usize, y: usize) -> bool {
     }
 
     let tree_height = grid[y][x] as i32;
-    if tree_height > max_left
+    tree_height > max_left
         || tree_height > max_right
         || tree_height > max_up
         || tree_height > max_down
-    {
-        true
-    } else {
-        false
-    }
 }
 
 fn scenic_score(grid: &Vec<Vec<u32>>, x: usize, y: usize) -> u32 {

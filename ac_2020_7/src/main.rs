@@ -19,7 +19,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                 match other_bags {
                     "no other bags." => vec![],
                     val => val
-                        .split(",")
+                        .split(',')
                         .map(|other_bag| {
                             other_bag
                                 .split_whitespace()
@@ -44,7 +44,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         bag_types: &HashMap<String, Vec<(usize, String)>>,
         bag_type: String,
     ) -> usize {
-        match inner_bag_counts.get(&bag_type).map(|entry| entry.clone()) {
+        match inner_bag_counts.get(&bag_type).copied() {
             Some(result) => result,
             None => bag_types
                 .get(&bag_type)
@@ -72,9 +72,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .map(|bag_type| bag_type.0.clone())
         .collect::<Vec<String>>();
 
-    while bag_queue.len() > 0 {
-        let bag_to_process = bag_queue.pop().unwrap();
-
+    while let Some(bag_to_process) = bag_queue.pop() {
         bag_queue.append(
             bag_types
                 .iter()

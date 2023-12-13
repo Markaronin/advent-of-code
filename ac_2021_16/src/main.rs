@@ -112,11 +112,10 @@ impl PacketData {
                     })
                     .chunks(5)
                     .into_iter()
-                    .map(|mut ch| {
+                    .flat_map(|mut ch| {
                         ch.next(); // Skip the first bit
                         ch.take(4)
                     })
-                    .flatten()
                     .collect::<String>(),
                 2,
             )

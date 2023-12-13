@@ -1,7 +1,4 @@
-use advent_of_code_util::{
-    base_aoc,
-    parse::{read_blocks, read_lines},
-};
+use advent_of_code_util::{base_aoc, parse::read_blocks};
 use itertools::Itertools;
 
 #[derive(Debug)]
@@ -80,7 +77,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .flat_map(|mut pair| {
             let start = *pair.next().unwrap();
             let amt = *pair.next().unwrap();
-            (start..start + amt).into_iter()
+            start..start + amt
         })
         .collect_vec();
 

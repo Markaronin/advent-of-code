@@ -27,8 +27,7 @@ impl DoF {
             DoF::Dir { contents, .. } => {
                 let mut a = contents
                     .values()
-                    .map(|child| DoF::traverse(child.clone()))
-                    .flatten()
+                    .flat_map(|child| DoF::traverse(child.clone()))
                     .collect_vec();
                 a.push(val);
                 a

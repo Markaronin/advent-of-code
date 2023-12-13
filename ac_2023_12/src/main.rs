@@ -110,13 +110,13 @@ impl Spring2 {
         let (raw_pattern, raw_constraints) = line.split_ascii_whitespace().collect_tuple().unwrap();
 
         let pattern = raw_pattern
-            .split(".")
+            .split('.')
             .filter(|s| !s.is_empty())
             .map(|s| s.to_string())
             .collect();
 
         let constraints = raw_constraints
-            .split(",")
+            .split(',')
             .map(|c| c.parse::<usize>().unwrap())
             .map(|amt| "#".repeat(amt))
             .collect();
@@ -130,8 +130,8 @@ impl Spring2 {
     }
 
     fn create_unchecked_variants(&self) -> Vec<Self> {
-        assert!(self.pattern.len() > 0);
-        assert!(self.pattern[0].contains("?"));
+        assert!(!self.pattern.is_empty());
+        assert!(self.pattern[0].contains('?'));
 
         let mut results = vec![];
 
@@ -149,7 +149,7 @@ impl Spring2 {
             .pattern
             .pop_front()
             .unwrap()
-            .split(".")
+            .split('.')
             .filter(|s| !s.is_empty())
             .map(|s| s.to_string())
             .collect_vec();
@@ -158,7 +158,9 @@ impl Spring2 {
             self.pattern.push_front(i);
         }
 
-        while self.pattern.len() > 0 && self.constraints.len() > 0 && !self.pattern[0].contains("?")
+        while !self.pattern.is_empty()
+            && !self.constraints.is_empty()
+            && !self.pattern[0].contains('?')
         {
             if self.pattern[0] != self.constraints[0] {
                 return None;
@@ -167,9 +169,9 @@ impl Spring2 {
                 self.constraints.pop_front().unwrap();
             }
         }
-        if self.pattern.len() > 0 {
+        if !self.pattern.is_empty() {
             // there is at least some pattern left
-            if self.constraints.len() > 0 {
+            if !self.constraints.is_empty() {
                 // there are some of both left
                 if self.pattern[0].chars().take_while(|c| *c == '#').count()
                     <= self.constraints[0].len()
@@ -180,14 +182,14 @@ impl Spring2 {
                 }
             } else {
                 // some pattern, no more constraints
-                if !self.pattern[0].contains("#") {
+                if !self.pattern[0].contains('#') {
                     // If it's all question marks
                     Some(self)
                 } else {
                     None
                 }
             }
-        } else if self.constraints.len() > 0 {
+        } else if !self.constraints.is_empty() {
             // no more chars but there are constraints
             None
         } else {
@@ -200,7 +202,7 @@ impl Spring2 {
         if self.constraints == self.pattern {
             return 1;
         }
-        match cache.get(&self) {
+        match cache.get(self) {
             Some(val) => *val,
             None => {
                 let mut sum = 0;

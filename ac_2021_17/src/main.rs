@@ -83,7 +83,7 @@ impl MovingCoordinate {
     }
 
     fn highest_point(&mut self, target_area: &TargetArea) -> Result<isize, isize> {
-        let mut highest_point = self.position.y.clone();
+        let mut highest_point = self.position.y;
         let mut did_intersect = false;
         if self.is_within(target_area) {
             did_intersect = true;

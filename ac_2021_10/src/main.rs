@@ -8,15 +8,13 @@ fn find_first_illegal_character(line: &str) -> Option<char> {
     for char in line.chars() {
         if bracket_close_map
             .keys()
-            .find(|open_bracket| char == **open_bracket)
-            .is_some()
+            .any(|open_bracket| char == *open_bracket)
         {
             chunk_stack.push(char);
         }
         if bracket_close_map
             .values()
-            .find(|close_bracket| char == **close_bracket)
-            .is_some()
+            .any(|close_bracket| char == *close_bracket)
         {
             match chunk_stack.pop() {
                 Some(open_bracket) => {
@@ -37,15 +35,13 @@ fn find_completion_string(incomplete_line: &str) -> Vec<char> {
     for char in incomplete_line.chars() {
         if bracket_close_map
             .keys()
-            .find(|open_bracket| char == **open_bracket)
-            .is_some()
+            .any(|open_bracket| char == *open_bracket)
         {
             chunk_stack.push(char);
         }
         if bracket_close_map
             .values()
-            .find(|close_bracket| char == **close_bracket)
-            .is_some()
+            .any(|close_bracket| char == *close_bracket)
         {
             match chunk_stack.pop() {
                 Some(open_bracket) => {
@@ -60,7 +56,7 @@ fn find_completion_string(incomplete_line: &str) -> Vec<char> {
     chunk_stack
         .iter()
         .rev()
-        .map(|opening_bracket| bracket_close_map.get(opening_bracket).unwrap().clone())
+        .map(|opening_bracket| *bracket_close_map.get(opening_bracket).unwrap())
         .collect::<Vec<char>>()
 }
 
@@ -75,10 +71,9 @@ fn line_completion_score(line_completion: Vec<char>) -> usize {
 fn line_syntax_error_score(corrupted_line: &str) -> usize {
     let syntax_score_map: HashMap<char, usize> =
         HashMap::from([(')', 3), (']', 57), ('}', 1197), ('>', 25137)]);
-    syntax_score_map
+    *syntax_score_map
         .get(&find_first_illegal_character(corrupted_line).unwrap())
         .unwrap()
-        .clone()
 }
 
 fn is_corrupted(line: &str) -> bool {
@@ -97,7 +92,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .iter()
         .filter(|line| !is_corrupted(line))
         .map(|incomplete_line| find_completion_string(incomplete_line))
-        .map(|line_completion| line_completion_score(line_completion))
+        .map(line_completion_score)
         .collect::<Vec<usize>>();
     line_completion_scores.sort_unstable();
     let middle_score = line_completion_scores[line_completion_scores.len() / 2];

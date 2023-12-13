@@ -1,7 +1,4 @@
-use advent_of_code_util::{
-    base_aoc,
-    parse::{read_blocks, read_lines},
-};
+use advent_of_code_util::{base_aoc, parse::read_blocks};
 use itertools::{zip, Itertools};
 use serde::Deserialize;
 use std::cmp::Ordering;
@@ -69,8 +66,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 
     let result_2 = input
         .into_iter()
-        .map(|(p1, p2)| vec![p1, p2])
-        .flatten()
+        .flat_map(|(p1, p2)| vec![p1, p2])
         .chain(divider_packets.clone())
         .rev() // Reverse to put divider packets at the start
         .sorted()

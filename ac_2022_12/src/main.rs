@@ -28,26 +28,26 @@ fn shortest_path_from_starting_coordinates(
     let mut parents: BTreeMap<Coordinate, Coordinate> = BTreeMap::new();
     queue.extend(starting_coordinates.clone());
     queue.iter().for_each(|starting_coordinate| {
-        visited.insert(starting_coordinate.clone());
+        visited.insert(*starting_coordinate);
     });
 
     while let Some(next) = queue.pop_front() {
         if next == ending_coordinate {
             break;
         }
-        for connection in connections(&nodes, next, width, height) {
+        for connection in connections(nodes, next, width, height) {
             if !visited.contains(&connection) {
-                visited.insert(connection.clone());
-                parents.insert(connection.clone(), next);
+                visited.insert(connection);
+                parents.insert(connection, next);
                 queue.push_back(connection);
             }
         }
     }
 
     let mut shortest_path_len = 0;
-    let mut current_position = ending_coordinate.clone();
+    let mut current_position = ending_coordinate;
     while !starting_coordinates.contains(&current_position) {
-        current_position = parents.get(&current_position).unwrap().clone();
+        current_position = *parents.get(&current_position).unwrap();
         shortest_path_len += 1;
     }
     shortest_path_len
@@ -85,7 +85,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let result_1 = shortest_path_from_starting_coordinates(
         &nodes,
         vec![starting_position],
-        ending_position.clone(),
+        ending_position,
         width,
         height,
     );

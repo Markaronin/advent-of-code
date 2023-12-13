@@ -33,7 +33,7 @@ impl BingoBoard {
                 return true;
             }
         }
-        return false;
+        false
     }
 
     fn sum_unmarked(&self) -> u32 {
@@ -63,7 +63,7 @@ fn bingo_board_from_chunk(chunk: Vec<String>) -> BingoBoard {
         }
     }
     BingoBoard {
-        board_values: board_values,
+        board_values,
         board_done: [[false; 5]; 5],
     }
 }
@@ -71,7 +71,7 @@ fn bingo_board_from_chunk(chunk: Vec<String>) -> BingoBoard {
 fn main() {
     let lines = read_lines("ac_2021_4/input");
     let draws = &lines[0]
-        .split(",")
+        .split(',')
         .map(|s| s.parse::<u32>().unwrap())
         .collect::<Vec<u32>>();
     let mut boards = lines[1..]

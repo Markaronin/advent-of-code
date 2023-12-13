@@ -29,7 +29,7 @@ fn get_program_output(input_file: &str) -> (isize, isize) {
                 let mut prev_diff = next_diff;
                 while let Some(diffs) = differences.pop() {
                     prev_diff = diffs.first().unwrap() - prev_diff;
-                    next_diff = diffs.last().unwrap() + next_diff;
+                    next_diff += diffs.last().unwrap();
                 }
                 (prev_diff, next_diff)
             })

@@ -50,7 +50,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let result_2 = {
         let mut locations = mappings
             .keys()
-            .filter(|l| l.ends_with("A"))
+            .filter(|l| l.ends_with('A'))
             .cloned()
             .collect_vec();
         let mut found = vec![0; locations.len()];
@@ -68,7 +68,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                     _ => panic!("Invalid direction"),
                 };
 
-                if locations[i].ends_with("Z") {
+                if locations[i].ends_with('Z') {
                     found[i] = (time_taken + 1) / 277;
                 }
             }

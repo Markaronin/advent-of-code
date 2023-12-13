@@ -26,11 +26,11 @@ impl RawDisplay {
 
         let digits_half = first_split[0]
             .split_whitespace()
-            .map(|item| sort_characters_in_string(item))
+            .map(sort_characters_in_string)
             .collect::<Vec<String>>();
         let output_half = first_split[1]
             .split_whitespace()
-            .map(|item| sort_characters_in_string(item))
+            .map(sort_characters_in_string)
             .collect::<Vec<String>>();
         for i in 0..=9 {
             new_raw_display.digits[i] = digits_half.get(i).unwrap().clone();
@@ -72,44 +72,44 @@ impl RawDisplay {
             .digits
             .iter()
             .filter(|digit| digit.len() == 5)
-            .map(|digit| digit.clone())
+            .cloned()
             .collect::<Vec<String>>();
         let six_letter_digits = self
             .digits
             .iter()
             .filter(|digit| digit.len() == 6)
-            .map(|digit| digit.clone())
+            .cloned()
             .collect::<Vec<String>>();
         let c = one
             .chars()
             .find(|char| {
                 six_letter_digits
                     .iter()
-                    .filter(|digit| digit.contains(char.clone()))
+                    .filter(|digit| digit.contains(*char))
                     .count()
                     == 2
             })
             .unwrap();
         let six = six_letter_digits
             .iter()
-            .find(|digit| !digit.contains(c.clone()))
+            .find(|digit| !digit.contains(c))
             .unwrap()
             .clone();
         let f = one.chars().find(|char| char != &c).unwrap();
         let d = four
             .chars()
-            .filter(|char| !one.contains(char.clone()))
+            .filter(|char| !one.contains(*char))
             .find(|char| {
                 six_letter_digits
                     .iter()
-                    .filter(|digit| !digit.contains(char.clone()))
+                    .filter(|digit| !digit.contains(*char))
                     .count()
                     == 1
             })
             .unwrap();
         let zero = six_letter_digits
             .iter()
-            .find(|digit| !digit.contains(d.clone()))
+            .find(|digit| !digit.contains(d))
             .unwrap()
             .clone();
         let nine = six_letter_digits
@@ -118,10 +118,7 @@ impl RawDisplay {
             .unwrap()
             .clone();
         let b = four.chars().find(|char| ![c, d, f].contains(char)).unwrap();
-        let e = eight
-            .chars()
-            .find(|char| !nine.contains(char.clone()))
-            .unwrap();
+        let e = eight.chars().find(|char| !nine.contains(*char)).unwrap();
         let five = five_letter_digits
             .iter()
             .find(|digit| !digit.contains(c) && !digit.contains(e))
@@ -173,7 +170,7 @@ fn main() {
     let lines = read_lines("ac_2021_8/input");
     let displays = lines
         .iter()
-        .map(|line| RawDisplay::from_line(line))
+        .map(RawDisplay::from_line)
         .collect::<Vec<RawDisplay>>();
     println!(
         "Number of unique outputs: {:?}",

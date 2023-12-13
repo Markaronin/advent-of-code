@@ -1,7 +1,4 @@
-use advent_of_code_util::{
-    base_aoc,
-    parse::{read_blocks, read_lines},
-};
+use advent_of_code_util::{base_aoc, parse::read_blocks};
 use itertools::Itertools;
 
 fn get_program_output(input_file: &str) -> (usize, usize) {

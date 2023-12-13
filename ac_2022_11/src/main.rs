@@ -1,7 +1,4 @@
-use advent_of_code_util::{
-    base_aoc,
-    parse::{read_blocks, read_lines},
-};
+use advent_of_code_util::{base_aoc, parse::read_blocks};
 use itertools::Itertools;
 use std::collections::BTreeMap;
 
@@ -156,7 +153,7 @@ impl Monkey {
             .join("")
             .split(',')
             .map(|raw_item| raw_item.parse::<usize>().unwrap())
-            .map(|val| Divisibility::from_val(val))
+            .map(Divisibility::from_val)
             .collect_vec();
 
         let operation = Operation::from_line(block.next().unwrap());
@@ -175,7 +172,7 @@ impl Monkey {
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let monkeys = read_blocks(input_file)
         .into_iter()
-        .map(|block| Monkey::from_block(block))
+        .map(Monkey::from_block)
         .collect_vec();
 
     // Doesn't work with part 2, because dividing a "divisibility" by 3 doesn't work

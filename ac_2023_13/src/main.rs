@@ -9,7 +9,7 @@ fn is_horizontal_reflection(block: &Vec<Vec<char>>, y: usize) -> bool {
             return false;
         }
     }
-    return true;
+    true
 }
 fn is_vertical_reflection(block: &Vec<Vec<char>>, x: usize) -> bool {
     let width = block[0].len();
@@ -19,7 +19,7 @@ fn is_vertical_reflection(block: &Vec<Vec<char>>, x: usize) -> bool {
             return false;
         }
     }
-    return true;
+    true
 }
 fn find_reflection_points(block: &Vec<Vec<char>>) -> Vec<usize> {
     let mut reflection_points = vec![];
@@ -77,7 +77,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
 
     let result_2 = input
         .iter()
-        .map(|block| find_reflection_points_with_smudge(block))
+        .map(find_reflection_points_with_smudge)
         .sum::<usize>();
 
     (result_1, result_2)

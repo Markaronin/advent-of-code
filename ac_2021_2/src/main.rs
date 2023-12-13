@@ -38,7 +38,7 @@ fn main() {
     let lines = read_lines("ac_2021_2/input");
     let commands = lines
         .iter()
-        .map(|line| Command::from_line(&line))
+        .map(|line| Command::from_line(line))
         .collect::<Vec<Command>>();
 
     let mut part_1_x = 0;

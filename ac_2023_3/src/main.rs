@@ -38,7 +38,7 @@ fn get_all_numbers_and_positions(grid: &Vec<String>) -> Vec<NumberAndPosition> {
         let re = Regex::new(r"\d+").unwrap();
 
         // Find all matches in the input string
-        for capture in re.captures_iter(&line) {
+        for capture in re.captures_iter(line) {
             let number = capture.get(0).unwrap().as_str().parse::<usize>().unwrap();
             let start = capture.get(0).unwrap().start();
             let end = capture.get(0).unwrap().end() - 1;
@@ -86,7 +86,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
             if gear_coordinate
                 .get_surrounding_coordinates(input[0].len(), input.len())
                 .iter()
-                .any(|surrounding_coordinate| num.contains_coordinate(&surrounding_coordinate))
+                .any(|surrounding_coordinate| num.contains_coordinate(surrounding_coordinate))
             {
                 surrounding_scores.push(num.number);
             }

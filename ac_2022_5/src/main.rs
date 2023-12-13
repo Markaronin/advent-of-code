@@ -55,8 +55,7 @@ impl Stacks {
     pub fn top_crates(&self) -> Vec<char> {
         self.val
             .values()
-            .into_iter()
-            .map(|stack| stack.last().unwrap().clone())
+            .map(|stack| *stack.last().unwrap())
             .collect_vec()
     }
 }
@@ -85,7 +84,7 @@ fn get_program_output(input_file: &str) -> (String, String) {
     let mut half_found = false;
     for line in input {
         if !half_found {
-            if line == "" {
+            if line.is_empty() {
                 half_found = true;
             } else {
                 stacks_input.push(line);
@@ -98,7 +97,7 @@ fn get_program_output(input_file: &str) -> (String, String) {
     let stacks = Stacks::new(stacks_input);
     let instructions: Vec<Instruction> = instructions_input
         .into_iter()
-        .map(|line| Instruction::new(line))
+        .map(Instruction::new)
         .collect();
 
     let mut stacks_1 = stacks.clone();

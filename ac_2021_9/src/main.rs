@@ -71,15 +71,14 @@ impl HeightMap {
     fn get_basin_size(&self, low_point: &Coordinate) -> usize {
         let mut basin_so_far: Vec<Coordinate> = vec![];
         let mut basin_queue = vec![low_point.clone()];
-        while basin_queue.len() > 0 {
-            let queue_coord = basin_queue.pop().unwrap();
+        while let Some(queue_coord) = basin_queue.pop() {
             let surrounding_coords =
                 queue_coord.get_surrounding_coordinates(self.data.len(), self.data[0].len());
             let mut surrounding_coords_not_in_basin = surrounding_coords
                 .iter()
                 .filter(|coord| !basin_so_far.contains(coord))
                 .filter(|coord| !basin_queue.contains(coord))
-                .map(|coord| coord.clone())
+                .cloned()
                 .collect::<Vec<Coordinate>>();
             if self.at(&queue_coord) != 9 {
                 basin_so_far.push(queue_coord);

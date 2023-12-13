@@ -28,7 +28,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_lines(input_file)
         .into_iter()
         .map(|line| {
-            let mut ranges = line.split(',').map(|r| Range::from_str(r));
+            let mut ranges = line.split(',').map(Range::from_str);
             (ranges.next().unwrap(), ranges.next().unwrap())
         })
         .collect::<Vec<_>>();

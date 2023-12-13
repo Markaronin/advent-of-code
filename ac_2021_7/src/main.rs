@@ -1,22 +1,22 @@
 use advent_of_code_util::parse::read_lines;
 
 fn single_cost_part_1(old_position: i64, new_position: i64) -> u32 {
-    (old_position - new_position).abs() as u32
+    (old_position - new_position).unsigned_abs() as u32
 }
 fn cost_to_align_part_1(positions: &Vec<u32>, position: u32) -> u32 {
     positions
         .iter()
-        .map(|p| single_cost_part_1(position as i64, p.clone() as i64))
+        .map(|p| single_cost_part_1(position as i64, *p as i64))
         .sum()
 }
 fn single_cost_part_2(old_position: i64, new_position: i64) -> u32 {
-    let n = (old_position - new_position).abs() as u32;
+    let n = (old_position - new_position).unsigned_abs() as u32;
     n * (n + 1) / 2
 }
 fn cost_to_align_part_2(positions: &Vec<u32>, position: u32) -> u32 {
     positions
         .iter()
-        .map(|p| single_cost_part_2(position as i64, p.clone() as i64))
+        .map(|p| single_cost_part_2(position as i64, *p as i64))
         .sum()
 }
 
@@ -26,8 +26,8 @@ fn get_minimum_fuel(input_file: &str) -> (u32, u32) {
         .split(',')
         .map(|position_string| position_string.parse::<u32>().unwrap())
         .collect::<Vec<u32>>();
-    let min_crab_position = crab_positions.iter().min().unwrap().clone();
-    let max_crab_position = crab_positions.iter().max().unwrap().clone();
+    let min_crab_position = *crab_positions.iter().min().unwrap();
+    let max_crab_position = *crab_positions.iter().max().unwrap();
     let mut min_fuel_part_1: u32 = u32::MAX;
     for position in min_crab_position..=max_crab_position {
         min_fuel_part_1 = std::cmp::min(

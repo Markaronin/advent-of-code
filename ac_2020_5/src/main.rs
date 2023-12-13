@@ -45,7 +45,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .into_iter()
         .map(|line| BoardingPass::from_str(&line))
         .collect::<Vec<BoardingPass>>();
-    boarding_passes.sort_unstable_by(|a, b| a.seat_id().cmp(&b.seat_id()));
+    boarding_passes.sort_unstable_by_key(|a| a.seat_id());
     let mut possibly_my_seat = None;
     for i in 0..=boarding_passes.len() - 2 {
         if boarding_passes[i].seat_id() + 1 != boarding_passes[i + 1].seat_id() {

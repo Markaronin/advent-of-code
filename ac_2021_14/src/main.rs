@@ -15,7 +15,7 @@ impl PairInsertionRule {
             .unwrap();
         PairInsertionRule {
             from: [
-                from_str.chars().nth(0).unwrap(),
+                from_str.chars().next().unwrap(),
                 from_str.chars().nth(1).unwrap(),
             ],
             to: to_str.chars().next().unwrap(),
@@ -71,8 +71,8 @@ impl Polymerization {
         let mut new_pairs = HashMap::new();
         for rule in &self.pair_insertion_rules {
             self.pairs.get(&rule.from).iter().for_each(|pair_amount| {
-                let new_pair_1 = [rule.from[0].clone(), rule.to.clone()];
-                let new_pair_2 = [rule.to.clone(), rule.from[1].clone()];
+                let new_pair_1 = [rule.from[0], rule.to];
+                let new_pair_2 = [rule.to, rule.from[1]];
                 *new_pairs.entry(new_pair_1).or_insert(0) += **pair_amount;
                 *new_pairs.entry(new_pair_2).or_insert(0) += **pair_amount;
                 *self.amounts.entry(rule.to).or_insert(0) += **pair_amount;

@@ -1,7 +1,4 @@
-use advent_of_code_util::{
-    parse::{read_blocks, read_lines},
-    Coordinate,
-};
+use advent_of_code_util::{parse::read_blocks, Coordinate};
 use itertools::Itertools;
 
 enum Direction {
@@ -16,7 +13,6 @@ impl Fold {
     fn from_str(string: &str) -> Self {
         string
             .split_whitespace()
-            .into_iter()
             .last()
             .unwrap()
             .split('=')
@@ -84,18 +80,13 @@ impl ToString for Paper {
         let mut return_string = String::new();
         for y in 0..=max_y {
             for x in 0..=max_x {
-                if self
-                    .dots
-                    .iter()
-                    .find(|dot| dot.x == x && dot.y == y)
-                    .is_some()
-                {
-                    return_string.push_str("#");
+                if self.dots.iter().any(|dot| dot.x == x && dot.y == y) {
+                    return_string.push('#');
                 } else {
-                    return_string.push_str(".");
+                    return_string.push('.');
                 }
             }
-            return_string.push_str("\n");
+            return_string.push('\n');
         }
         return_string
     }

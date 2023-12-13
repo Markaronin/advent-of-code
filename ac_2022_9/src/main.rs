@@ -41,7 +41,7 @@ impl Direction {
 }
 
 fn move_tail(head: &Coordinate, tail: &mut Coordinate) {
-    if !head.is_touching(&tail) {
+    if !head.is_touching(tail) {
         match tail.x.cmp(&head.x) {
             Ordering::Less => tail.x += 1,
             Ordering::Equal => (),
@@ -71,8 +71,8 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     let mut tail_positions = [Coordinate { x: 0, y: 0 }; 9];
     let mut first_tail_positions_visited: BTreeSet<Coordinate> = BTreeSet::new();
     let mut last_tail_positions_visited: BTreeSet<Coordinate> = BTreeSet::new();
-    first_tail_positions_visited.insert(tail_positions[0].clone());
-    last_tail_positions_visited.insert(tail_positions[8].clone());
+    first_tail_positions_visited.insert(tail_positions[0]);
+    last_tail_positions_visited.insert(tail_positions[8]);
 
     for (direction, amount) in input {
         for _ in 0..amount {
@@ -82,8 +82,8 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                 let split_slice = tail_positions.split_at_mut(i);
                 move_tail(&split_slice.0[i - 1], &mut split_slice.1[0]);
             }
-            first_tail_positions_visited.insert(tail_positions[0].clone());
-            last_tail_positions_visited.insert(tail_positions[8].clone());
+            first_tail_positions_visited.insert(tail_positions[0]);
+            last_tail_positions_visited.insert(tail_positions[8]);
         }
     }
 

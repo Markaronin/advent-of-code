@@ -4,7 +4,7 @@ use itertools::Itertools;
 fn find_packet_start(input: &Vec<char>, num_unique: usize) -> usize {
     input
         .windows(num_unique)
-        .find_position(|window| window.into_iter().unique().count() == window.len())
+        .find_position(|window| window.iter().unique().count() == window.len())
         .unwrap()
         .0
         + num_unique

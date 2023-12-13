@@ -47,7 +47,6 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         .unwrap();
 
     let result_2 = (0..part_2_time)
-        .into_iter()
         .map(|push_time| {
             let speed = push_time;
             let travel_time = part_2_time - push_time;
