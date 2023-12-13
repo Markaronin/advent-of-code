@@ -1,6 +1,10 @@
 use std::collections::{BTreeSet, VecDeque};
 
-use advent_of_code_util::*;
+use advent_of_code_util::{
+    base_aoc,
+    parse::{read_lines, read_lines_of_chars},
+    Coordinate,
+};
 use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

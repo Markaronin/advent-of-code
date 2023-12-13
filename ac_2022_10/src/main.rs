@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{abs_diff, base_aoc, parse::read_lines};
 use itertools::Itertools;
 
 enum Instruction {

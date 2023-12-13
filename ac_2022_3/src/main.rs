@@ -1,4 +1,7 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{
+    base_aoc, intersect_vectors,
+    parse::{read_lines, read_lines_of_chars},
+};
 use itertools::Itertools;
 
 fn to_priority(c: char) -> usize {

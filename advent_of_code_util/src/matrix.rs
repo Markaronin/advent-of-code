@@ -14,6 +14,6 @@ pub fn transpose2<T>(v: Vec<Vec<T>>) -> Vec<Vec<T>> {
         .collect()
 }
 
-pub fn clone_column<T: Clone>(v: &Vec<Vec<T>>, x: usize) -> Vec<T> {
+pub fn clone_column<T: Clone>(v: &[Vec<T>], x: usize) -> Vec<T> {
     v.iter().map(|row| row[x].clone()).collect_vec()
 }

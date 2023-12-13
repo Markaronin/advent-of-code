@@ -1,4 +1,4 @@
-use advent_of_code_util::{matrix::transpose2, *};
+use advent_of_code_util::{base_aoc, matrix::transpose2, parse::read_lines_of_chars, Coordinate};
 use itertools::Itertools;
 
 /**

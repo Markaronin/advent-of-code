@@ -1,4 +1,4 @@
-use advent_of_code_util::read_lines;
+use advent_of_code_util::parse::read_lines;
 
 struct LanternfishPopulation {
     pops: [usize; 9],

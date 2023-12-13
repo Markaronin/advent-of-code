@@ -1,6 +1,6 @@
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines, Coordinate};
 use itertools::Itertools;
 
 fn connections(

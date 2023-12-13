@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines};
 
 fn required_fuel(mass: isize) -> isize {
     (mass / 3) - 2

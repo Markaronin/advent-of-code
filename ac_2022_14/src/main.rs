@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines, Coordinate};
 use itertools::Itertools;
 
 fn get_all_points(vertices: Vec<Coordinate>) -> Vec<Coordinate> {

@@ -1,4 +1,7 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{
+    base_aoc,
+    parse::{read_blocks, read_lines},
+};
 use itertools::{zip, Itertools};
 use serde::Deserialize;
 use std::cmp::Ordering;

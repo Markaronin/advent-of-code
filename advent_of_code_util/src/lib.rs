@@ -1,62 +1,8 @@
 use itertools::Itertools;
 use std::collections::BTreeSet;
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
 
 pub mod matrix;
-
-pub fn read_lines<P>(filename: P) -> Vec<String>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename).unwrap();
-    io::BufReader::new(file)
-        .lines()
-        .map(|line| line.unwrap())
-        .collect()
-}
-
-pub fn read_lines_of_chars<P>(filename: P) -> Vec<Vec<char>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename).unwrap();
-    io::BufReader::new(file)
-        .lines()
-        .map(|line| line.unwrap())
-        .map(|line| line.chars().collect_vec())
-        .collect()
-}
-
-pub fn read_blocks<P>(filename: P) -> Vec<Vec<String>>
-where
-    P: AsRef<Path>,
-{
-    let file = File::open(filename).unwrap();
-    let mut blocks = vec![];
-    let mut latest_block = vec![];
-    for line in io::BufReader::new(file).lines().map(|line| line.unwrap()) {
-        if line.is_empty() {
-            blocks.push(latest_block);
-            latest_block = vec![];
-        } else {
-            latest_block.push(line);
-        }
-    }
-    if !latest_block.is_empty() {
-        blocks.push(latest_block);
-    }
-    blocks
-}
-
-pub fn split_block_on_whitespace(block: Vec<String>) -> Vec<String> {
-    block
-        .iter()
-        .flat_map(|line| line.split_whitespace())
-        .map(|split_line| split_line.to_string())
-        .collect::<Vec<String>>()
-}
+pub mod parse;
 
 pub fn abs_diff<T: Ord + std::ops::Sub<Output = T> + Copy>(slf: T, other: T) -> T {
     std::cmp::max(slf, other) - std::cmp::min(slf, other)
@@ -84,24 +30,22 @@ impl Coordinate {
         assert!(self.x == to.x || self.y == to.y);
         if self.x == to.x {
             if self.y < to.y {
-                return (self.y..=to.y)
+                (self.y..=to.y)
                     .map(|y| Coordinate { x: self.x, y })
-                    .collect();
+                    .collect()
             } else {
-                return (to.y..=self.y)
+                (to.y..=self.y)
                     .map(|y| Coordinate { x: self.x, y })
-                    .collect();
+                    .collect()
             }
+        } else if self.x < to.x {
+            (self.x..=to.x)
+                .map(|x| Coordinate { x, y: self.y })
+                .collect()
         } else {
-            if self.x < to.x {
-                return (self.x..=to.x)
-                    .map(|x| Coordinate { x, y: self.y })
-                    .collect();
-            } else {
-                return (to.x..=self.x)
-                    .map(|x| Coordinate { x, y: self.y })
-                    .collect();
-            }
+            (to.x..=self.x)
+                .map(|x| Coordinate { x, y: self.y })
+                .collect()
         }
     }
 
@@ -216,41 +160,10 @@ pub fn intersect_vectors<T: std::cmp::Ord>(vecs: Vec<Vec<T>>) -> Vec<T> {
 
     for vec in vec_iter {
         let vec_set = BTreeSet::from_iter(vec.into_iter());
-        remaining = remaining
-            .into_iter()
-            .filter(|item| vec_set.contains(item))
-            .collect();
+        remaining.retain(|item| vec_set.contains(item));
     }
 
     remaining.into_iter().collect_vec()
-}
-
-#[cfg(test)]
-mod tests {
-    use crate::*;
-
-    #[test]
-    fn split_block_on_whitespace_test() {
-        assert_eq!(
-            split_block_on_whitespace(vec![
-                "pid:161cm eyr:2025 hcl:#b6652a".to_string(),
-                "cid:213".to_string(),
-                "ecl:xry".to_string(),
-                "hgt:150cm".to_string(),
-                "iyr:2024 byr:2012".to_string()
-            ]),
-            vec![
-                "pid:161cm".to_string(),
-                "eyr:2025".to_string(),
-                "hcl:#b6652a".to_string(),
-                "cid:213".to_string(),
-                "ecl:xry".to_string(),
-                "hgt:150cm".to_string(),
-                "iyr:2024".to_string(),
-                "byr:2012".to_string()
-            ]
-        );
-    }
 }
 
 #[macro_export]
@@ -277,6 +190,7 @@ macro_rules! base_aoc {
         }
     };
 }
+
 #[macro_export]
 macro_rules! base_aoc_ignore_tests {
     ( $part_1_answer:literal, $part_2_answer:literal ) => {

@@ -1,7 +1,8 @@
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_lines;
+use advent_of_code_util::Coordinate;
 
 #[derive(Copy, Clone, Eq, PartialEq, Debug)]
 struct State {

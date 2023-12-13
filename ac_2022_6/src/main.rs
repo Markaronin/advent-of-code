@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines};
 use itertools::Itertools;
 
 fn find_packet_start(input: &Vec<char>, num_unique: usize) -> usize {

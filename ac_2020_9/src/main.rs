@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_lines;
 
 fn is_valid(num: usize, slice: &[usize]) -> bool {
     for i in 0..slice.len() {

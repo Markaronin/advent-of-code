@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_blocks;
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input = read_blocks(input_file);

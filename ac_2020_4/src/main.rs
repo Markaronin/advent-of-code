@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::parse::{read_blocks, read_lines, split_block_on_whitespace};
 use itertools::Itertools;
 use regex::Regex;
 
@@ -113,6 +113,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
     )
 }
 
+fn main() {
+    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
+    let (part_1_output, part_2_output) = get_program_output(&file_path);
+    println!("Part 1 output: {}", part_1_output);
+    println!("Part 2 output: {}", part_2_output);
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -155,11 +162,4 @@ mod tests {
         assert_eq!(part_1_output, 10);
         assert_eq!(part_2_output, 6);
     }
-}
-
-fn main() {
-    let file_path = format!("{}/input", env!("CARGO_MANIFEST_DIR"));
-    let (part_1_output, part_2_output) = get_program_output(&file_path);
-    println!("Part 1 output: {}", part_1_output);
-    println!("Part 2 output: {}", part_2_output);
 }

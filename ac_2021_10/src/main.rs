@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use advent_of_code_util::read_lines;
+use advent_of_code_util::parse::read_lines;
 
 fn find_first_illegal_character(line: &str) -> Option<char> {
     let bracket_close_map = HashMap::from([('(', ')'), ('[', ']'), ('{', '}'), ('<', '>')]);

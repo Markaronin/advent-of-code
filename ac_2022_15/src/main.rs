@@ -1,6 +1,6 @@
 use std::collections::BTreeSet;
 
-use advent_of_code_util::*;
+use advent_of_code_util::{abs_diff, parse::read_lines};
 use itertools::Itertools;
 use regex::Regex;
 

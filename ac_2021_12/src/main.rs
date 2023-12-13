@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_lines;
 use itertools::Itertools;
 
 struct Cave {

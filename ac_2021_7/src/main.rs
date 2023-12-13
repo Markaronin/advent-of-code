@@ -1,4 +1,4 @@
-use advent_of_code_util::read_lines;
+use advent_of_code_util::parse::read_lines;
 
 fn single_cost_part_1(old_position: i64, new_position: i64) -> u32 {
     (old_position - new_position).abs() as u32

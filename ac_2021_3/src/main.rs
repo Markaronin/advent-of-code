@@ -1,4 +1,4 @@
-use advent_of_code_util::read_lines;
+use advent_of_code_util::parse::read_lines;
 
 fn to_binary_vector(strs: &Vec<String>) -> Vec<usize> {
     strs.iter()
@@ -19,13 +19,7 @@ fn get_num_ones(numbers: &Vec<usize>, position: usize) -> usize {
 fn most_common_bit(numbers: &Vec<usize>, position: usize) -> bool {
     let num_ones = get_num_ones(numbers, position) as f64;
     let half_numbers_length = numbers.len() as f64 / 2.0;
-    if num_ones > half_numbers_length {
-        true
-    } else if num_ones < half_numbers_length {
-        false
-    } else {
-        false
-    }
+    num_ones > half_numbers_length
 }
 fn most_common_bit_with_tiebreaker(
     numbers: &Vec<usize>,

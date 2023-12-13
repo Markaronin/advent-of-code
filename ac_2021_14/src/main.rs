@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_blocks;
 use itertools::Itertools;
 
 struct PairInsertionRule {

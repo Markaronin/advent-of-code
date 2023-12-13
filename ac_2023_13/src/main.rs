@@ -1,4 +1,4 @@
-use advent_of_code_util::{matrix::clone_column, *};
+use advent_of_code_util::{base_aoc, matrix::clone_column, parse::read_blocks};
 use itertools::Itertools;
 
 fn is_horizontal_reflection(block: &Vec<Vec<char>>, y: usize) -> bool {

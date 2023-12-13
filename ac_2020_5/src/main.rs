@@ -1,6 +1,6 @@
 use std::str::Chars;
 
-use advent_of_code_util::*;
+use advent_of_code_util::parse::read_lines;
 
 #[derive(Debug)]
 struct BoardingPass {

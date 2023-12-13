@@ -1,4 +1,4 @@
-use advent_of_code_util::read_lines;
+use advent_of_code_util::parse::read_lines;
 use std::collections::HashMap;
 
 fn sort_characters_in_string(str: &str) -> String {

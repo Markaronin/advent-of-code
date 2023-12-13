@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines};
 
 fn is_tree_visible(grid: &Vec<Vec<u32>>, x: usize, y: usize) -> bool {
     let mut max_left = -1;

@@ -1,6 +1,6 @@
 use std::collections::BTreeSet;
 
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines};
 use itertools::Itertools;
 
 struct Card {

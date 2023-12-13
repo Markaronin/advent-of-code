@@ -1,6 +1,6 @@
 use std::collections::{BTreeMap, VecDeque};
 
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc, parse::read_lines};
 use itertools::Itertools;
 
 // #[derive(Debug, Clone)]

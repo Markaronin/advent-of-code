@@ -1,7 +1,7 @@
 #![allow(unused_variables, unused_mut)]
 use std::collections::HashMap;
 
-use advent_of_code_util::*;
+use advent_of_code_util::{abs_diff, parse::read_lines};
 
 struct ConnectionRouteFinder {
     target_joltage: usize,

@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use advent_of_code_util::*;
+use advent_of_code_util::{parse::read_lines, remove_first_and_last};
 
 #[derive(Debug)]
 enum SFNPairPart {

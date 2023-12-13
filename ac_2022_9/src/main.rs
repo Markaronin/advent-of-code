@@ -1,6 +1,6 @@
 use std::{cmp::Ordering, collections::BTreeSet};
 
-use advent_of_code_util::*;
+use advent_of_code_util::{abs_diff, base_aoc, parse::read_lines};
 use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]

@@ -1,4 +1,4 @@
-use advent_of_code_util::*;
+use advent_of_code_util::{base_aoc_ignore_tests, parse::read_lines};
 use itertools::Itertools;
 
 const NEW_ROCKS: [[[SpaceType; 4]; 4]; 5] = [
