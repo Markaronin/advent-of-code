@@ -29,6 +29,22 @@ where
         .collect()
 }
 
+pub fn read_grid_of_digits<P>(filename: P) -> Vec<Vec<usize>>
+where
+    P: AsRef<Path>,
+{
+    let file = File::open(filename).unwrap();
+    io::BufReader::new(file)
+        .lines()
+        .map(|line| line.unwrap())
+        .map(|line| {
+            line.chars()
+                .map(|c| c.to_digit(10).unwrap() as usize)
+                .collect_vec()
+        })
+        .collect()
+}
+
 pub fn read_blocks<P>(filename: P) -> Vec<Vec<String>>
 where
     P: AsRef<Path>,
