@@ -2,6 +2,7 @@ use std::{
     fs::File,
     io::{self, BufRead},
     path::Path,
+    str::FromStr,
 };
 
 use itertools::Itertools;
@@ -14,6 +15,20 @@ where
     io::BufReader::new(file)
         .lines()
         .map(|line| line.unwrap())
+        .collect()
+}
+
+pub fn read_parsed_lines<T, P>(filename: P) -> Vec<T>
+where
+    P: AsRef<Path>,
+    T: FromStr,
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    let file = File::open(filename).unwrap();
+    io::BufReader::new(file)
+        .lines()
+        .map(|line| line.unwrap())
+        .map(|line| T::from_str(&line).unwrap())
         .collect()
 }
 
