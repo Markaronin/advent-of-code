@@ -1,6 +1,6 @@
 use std::{collections::BTreeSet, str::FromStr};
 
-use advent_of_code_util::{base_aoc, parse::read_parsed_lines};
+use advent_of_code_util::{base_aoc, parse::read_parsed_lines, RightOrLeft};
 use itertools::Itertools;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
@@ -60,6 +60,8 @@ enum Direction {
     Left,
     Right,
 }
+
+#[derive(Debug)]
 struct Instruction {
     direction: Direction,
     amount: isize,
@@ -156,10 +158,57 @@ fn get_filled_coordinates(edge_coordinates: &BTreeSet<Coordinate>) -> BTreeSet<C
     filled_coords
 }
 
-fn calculate_filled_coordinates(instructions: &Vec<Instruction>) -> usize {
+#[derive(Debug)]
+struct Instruction2 {
+    dir: RightOrLeft,
+    distance: isize,
+}
+fn calculate_filled_coordinates(instructions: &[Instruction]) -> usize {
     // We can just look at "squares" caused by the fact that we're in a loop
     // NEW IDEA: Take segments of Up-Over-Down (or their equivalents), chop off the square, and turn it into just over
-    unimplemented!()
+
+    let mut previous_direction = match instructions[0].direction {
+        Direction::Up => Direction::Left,
+        Direction::Down => Direction::Right,
+        Direction::Left => Direction::Down,
+        Direction::Right => Direction::Up,
+    };
+    let mut new_instructions = Vec::new();
+    for instruction in instructions {
+        let turn_direction = match (previous_direction, instruction.direction) {
+            (Direction::Up, Direction::Left) => RightOrLeft::Left,
+            (Direction::Up, Direction::Right) => RightOrLeft::Right,
+            (Direction::Left, Direction::Down) => RightOrLeft::Left,
+            (Direction::Left, Direction::Up) => RightOrLeft::Right,
+            (Direction::Right, Direction::Up) => RightOrLeft::Left,
+            (Direction::Right, Direction::Down) => RightOrLeft::Right,
+            (Direction::Down, Direction::Right) => RightOrLeft::Left,
+            (Direction::Down, Direction::Left) => RightOrLeft::Right,
+            _ => panic!(
+                "Unimplemented direction change {previous_direction:?} {:?}",
+                instruction.direction
+            ),
+        };
+        previous_direction = instruction.direction;
+        new_instructions.push(Instruction2 {
+            dir: turn_direction,
+            distance: instruction.amount,
+        })
+    }
+
+    dbg!(new_instructions);
+
+    let mut total_area = 0;
+
+    // Method to maybe make this easier: move "instruction" to a new type that has "right" and "left"
+
+    // while instructions.len() > 4 {
+    // Step 1: find the start index of an up-over-down segment
+    // Step 2: calculate the area (up * over)
+    // Step 3: replace with just a "down" segment, and append "over" segment to the segment before
+    // }
+
+    total_area
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {

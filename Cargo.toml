@@ -4,6 +4,7 @@ members = [
     "ac_*",
     "advent_of_code_util",
 ]
+resolver = "2"
 
 [workspace.package]
 version = "0.1.0"

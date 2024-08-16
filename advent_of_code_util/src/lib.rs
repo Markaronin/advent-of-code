@@ -4,6 +4,12 @@ use std::{collections::BTreeSet, str::FromStr};
 pub mod matrix;
 pub mod parse;
 
+#[derive(Debug)]
+pub enum RightOrLeft {
+    Right,
+    Left,
+}
+
 pub fn abs_diff<T: Ord + std::ops::Sub<Output = T> + Copy>(slf: T, other: T) -> T {
     std::cmp::max(slf, other) - std::cmp::min(slf, other)
 }
