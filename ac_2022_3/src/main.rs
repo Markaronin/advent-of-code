@@ -21,7 +21,7 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
                     .map(|vec| vec.iter().collect_vec())
                     .collect_vec(),
             );
-            to_priority(**common.get(0).unwrap())
+            to_priority(**common.first().unwrap())
         })
         .sum();
 

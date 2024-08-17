@@ -16,7 +16,7 @@ fn get_coordinates_with_expansion(input: &[Vec<char>], expansion: usize) -> Vec<
             }
         })
         .collect_vec();
-    let expanded_cols: Vec<usize> = transpose2(input.clone().to_vec())
+    let expanded_cols: Vec<usize> = transpose2(input.to_vec())
         .iter()
         .enumerate()
         .filter_map(|(x, col)| {

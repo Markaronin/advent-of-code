@@ -1,6 +1,6 @@
 use advent_of_code_util::parse::read_lines;
 
-fn num_increases(numbers: &Vec<u32>) -> u32 {
+fn num_increases(numbers: &[u32]) -> u32 {
     let mut prev = numbers[0];
     let mut num_increases = 0;
     for number in numbers {

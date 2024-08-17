@@ -49,9 +49,9 @@ fn get_graph(
     let mut node_map: BTreeMap<Coordinate, NodeIndex> = BTreeMap::new();
     let mut graph = Graph::new();
 
-    for y in 0..max_height {
-        for x in 0..max_width {
-            if input[y][x] != '#' {
+    for (y, row) in input.iter().enumerate() {
+        for (x, col) in row.iter().enumerate() {
+            if *col != '#' {
                 let idx = graph.add_node(Coordinate { x, y });
                 node_map.insert(Coordinate { x, y }, idx);
             }

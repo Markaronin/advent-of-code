@@ -11,7 +11,11 @@ fn find_packet_start(input: &[char], num_unique: usize) -> usize {
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
-    let input = read_lines(input_file).get(0).unwrap().chars().collect_vec();
+    let input = read_lines(input_file)
+        .first()
+        .unwrap()
+        .chars()
+        .collect_vec();
 
     let result_1 = find_packet_start(&input, 4);
     let result_2 = find_packet_start(&input, 14);

@@ -131,36 +131,35 @@ impl<T: Clone + Eq + std::hash::Hash + From<char>> Hand<T> {
 
 impl PartialOrd for Hand<Card1> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        let ord = self.hand_type().partial_cmp(&other.hand_type()).unwrap();
-        match &ord {
-            Ordering::Less => Some(ord),
-            Ordering::Equal => self.cards.partial_cmp(&other.cards),
-            Ordering::Greater => Some(ord),
-        }
+        Some(self.cmp(other))
     }
 }
 impl Ord for Hand<Card1> {
     fn cmp(&self, other: &Self) -> Ordering {
-        self.partial_cmp(other).unwrap()
+        let ord = self.hand_type().cmp(&other.hand_type());
+        match &ord {
+            Ordering::Less => ord,
+            Ordering::Equal => self.cards.cmp(&other.cards),
+            Ordering::Greater => ord,
+        }
     }
 }
 
 impl PartialOrd for Hand<Card2> {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        let ord = best_hand_with_joker(self)
-            .hand_type()
-            .partial_cmp(&best_hand_with_joker(other).hand_type())
-            .unwrap();
-        match &ord {
-            Ordering::Less => Some(ord),
-            Ordering::Equal => self.cards.partial_cmp(&other.cards),
-            Ordering::Greater => Some(ord),
-        }
+        Some(self.cmp(other))
     }
 }
 impl Ord for Hand<Card2> {
     fn cmp(&self, other: &Self) -> Ordering {
-        self.partial_cmp(other).unwrap()
+        let ord = best_hand_with_joker(self)
+            .hand_type()
+            .cmp(&best_hand_with_joker(other).hand_type());
+        match &ord {
+            Ordering::Less => ord,
+            Ordering::Equal => self.cards.cmp(&other.cards),
+            Ordering::Greater => ord,
+        }
     }
 }
 

@@ -33,7 +33,7 @@ fn parse_input(input: Vec<String>) -> (Vec<String>, BTreeMap<String, BTreeSet<St
     (nodes, edges)
 }
 
-fn group_sizes(nodes: &Vec<String>, edges: &BTreeMap<String, BTreeSet<String>>) -> Vec<usize> {
+fn group_sizes(nodes: &[String], edges: &BTreeMap<String, BTreeSet<String>>) -> Vec<usize> {
     // Mark all nodes unvisited
     // Set next_group = 0
     // Visit each node
@@ -49,7 +49,7 @@ fn group_sizes(nodes: &Vec<String>, edges: &BTreeMap<String, BTreeSet<String>>) 
     let mut group_map: BTreeMap<String, usize> = BTreeMap::new();
 
     for node in nodes {
-        if group_map.get(node).is_none() {
+        if !group_map.contains_key(node) {
             let mut queue = vec![node];
             let group = next_group;
             next_group += 1;

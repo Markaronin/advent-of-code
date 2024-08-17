@@ -102,7 +102,7 @@ impl Instruction {
     }
 }
 
-fn get_edge_coordinates(dig_plan: &Vec<Instruction>) -> BTreeSet<Coordinate> {
+fn get_edge_coordinates(dig_plan: &[Instruction]) -> BTreeSet<Coordinate> {
     let mut current_coord = Coordinate { x: 0, y: 0 };
     let mut vertical_edge_coordinates = BTreeSet::new();
     for instruction in dig_plan {

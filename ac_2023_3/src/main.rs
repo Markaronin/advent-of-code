@@ -2,7 +2,7 @@ use advent_of_code_util::{base_aoc, parse::read_lines, Coordinate};
 use itertools::Itertools;
 use regex::Regex;
 
-fn is_part_number(grid: &Vec<String>, line_number: usize, start: usize, end: usize) -> bool {
+fn is_part_number(grid: &[String], line_number: usize, start: usize, end: usize) -> bool {
     let start_x = start.max(1) - 1;
     let end_x = (end + 1).min(grid.len() - 1);
     let start_y = line_number.max(1) - 1;

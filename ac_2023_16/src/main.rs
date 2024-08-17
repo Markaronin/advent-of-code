@@ -20,7 +20,7 @@ fn calculate_light_path(
     match current_space {
         '.' => next_pos_straight_line(grid, current_pos, current_direction)
             .map(|next| vec![next])
-            .unwrap_or(vec![]),
+            .unwrap_or_default(),
         '/' => {
             let new_direction = match current_direction {
                 Direction::Up => Direction::Right,
@@ -30,7 +30,7 @@ fn calculate_light_path(
             };
             next_pos_straight_line(grid, current_pos, new_direction)
                 .map(|next| vec![next])
-                .unwrap_or(vec![])
+                .unwrap_or_default()
         }
         '\\' => {
             let new_direction = match current_direction {
@@ -41,13 +41,13 @@ fn calculate_light_path(
             };
             next_pos_straight_line(grid, current_pos, new_direction)
                 .map(|next| vec![next])
-                .unwrap_or(vec![])
+                .unwrap_or_default()
         }
         '|' => match current_direction {
             Direction::Up | Direction::Down => {
                 next_pos_straight_line(grid, current_pos, current_direction)
                     .map(|next| vec![next])
-                    .unwrap_or(vec![])
+                    .unwrap_or_default()
             }
             Direction::Left | Direction::Right => [
                 next_pos_straight_line(grid, current_pos, Direction::Up),
@@ -61,7 +61,7 @@ fn calculate_light_path(
             Direction::Left | Direction::Right => {
                 next_pos_straight_line(grid, current_pos, current_direction)
                     .map(|next| vec![next])
-                    .unwrap_or(vec![])
+                    .unwrap_or_default()
             }
             Direction::Up | Direction::Down => [
                 next_pos_straight_line(grid, current_pos, Direction::Left),

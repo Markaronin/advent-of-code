@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+#![allow(unused_variables)]
+
 use std::str::FromStr;
 
 use advent_of_code_util::{base_aoc, parse::read_parsed_lines};

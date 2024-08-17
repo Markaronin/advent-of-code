@@ -1,3 +1,5 @@
+#![allow(clippy::ptr_arg)]
+
 use advent_of_code_util::{base_aoc, matrix::clone_column, parse::read_blocks};
 use itertools::Itertools;
 

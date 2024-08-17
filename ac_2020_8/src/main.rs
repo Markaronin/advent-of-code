@@ -1,7 +1,7 @@
 use advent_of_code_util::parse::read_lines;
 use itertools::Itertools;
 
-fn run_program(instructions: &Vec<(String, isize)>) -> Result<isize, isize> {
+fn run_program(instructions: &[(String, isize)]) -> Result<isize, isize> {
     let mut have_executed_instructions = vec![false; instructions.len()];
     let mut instruction_pointer = 0;
     let mut accumulator = 0;

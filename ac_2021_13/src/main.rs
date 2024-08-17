@@ -1,3 +1,5 @@
+use std::fmt::{Display, Write};
+
 use advent_of_code_util::{parse::read_blocks, Coordinate};
 use itertools::Itertools;
 
@@ -73,22 +75,21 @@ impl Paper {
         self.dots.len()
     }
 }
-impl ToString for Paper {
-    fn to_string(&self) -> String {
+impl Display for Paper {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let max_x = self.dots.iter().map(|dot| dot.x).max().unwrap();
         let max_y = self.dots.iter().map(|dot| dot.y).max().unwrap();
-        let mut return_string = String::new();
         for y in 0..=max_y {
             for x in 0..=max_x {
                 if self.dots.iter().any(|dot| dot.x == x && dot.y == y) {
-                    return_string.push('#');
+                    f.write_char('#')?;
                 } else {
-                    return_string.push('.');
+                    f.write_char('.')?;
                 }
             }
-            return_string.push('\n');
+            f.write_char('\n')?;
         }
-        return_string
+        Ok(())
     }
 }
 
@@ -110,7 +111,7 @@ fn get_program_output(input_file: &str) -> (usize, &str) {
 
     folds.for_each(|fold| paper.fold(&fold));
 
-    println!("{}", paper.to_string());
+    println!("{paper}");
 
     (after_first_fold, "HZLEHJRK")
 }
