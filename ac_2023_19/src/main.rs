@@ -1,7 +1,12 @@
-use std::{collections::BTreeMap, str::FromStr};
+use std::{collections::BTreeMap, ops::RangeInclusive, str::FromStr};
 
 use advent_of_code_util::{base_aoc, parse::read_blocks};
 use itertools::Itertools;
+
+type PartRanges = [RangeInclusive<usize>; 4];
+fn amount(ranges: &PartRanges) -> usize {
+    ranges.iter().map(|r| r.size_hint().0).product()
+}
 
 #[derive(Debug)]
 struct Part {
@@ -35,7 +40,7 @@ impl Part {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 enum Destination {
     Accepted,
     Rejected,
@@ -74,6 +79,42 @@ impl Rule {
         } else {
             None
         }
+    }
+
+    pub fn split_ranges(&self, ranges: &PartRanges) -> (Option<PartRanges>, Option<PartRanges>) {
+        let range_index = match self.rating {
+            'x' => 0,
+            'm' => 1,
+            'a' => 2,
+            's' => 3,
+            _ => unreachable!(),
+        };
+        let (split, remainder) = match self.condition {
+            LessOrGreater::Less => (
+                *ranges[range_index].start()..=self.value - 1,
+                self.value..=*ranges[range_index].end(),
+            ),
+            LessOrGreater::Greater => (
+                self.value + 1..=*ranges[range_index].end(),
+                *ranges[range_index].start()..=self.value,
+            ),
+        };
+        (
+            if split.is_empty() {
+                None
+            } else {
+                let mut s = ranges.clone();
+                s[range_index] = split;
+                Some(s)
+            },
+            if remainder.is_empty() {
+                None
+            } else {
+                let mut r = ranges.clone();
+                r[range_index] = remainder;
+                Some(r)
+            },
+        )
     }
 }
 impl FromStr for Rule {
@@ -133,6 +174,44 @@ impl Workflow {
         }
         destination
     }
+
+    pub fn process_ranges(
+        label: Destination,
+        workflows: &BTreeMap<String, Workflow>,
+        ranges: PartRanges,
+    ) -> usize {
+        match label {
+            Destination::Accepted => amount(&ranges),
+            Destination::Rejected => 0,
+            Destination::Rule(label) => {
+                let current_workflow = workflows.get(&label).unwrap();
+                let mut remainder = Some(ranges.clone());
+                let mut total_sum = 0;
+                for rule in &current_workflow.rules {
+                    if remainder.is_some() {
+                        let result = rule.split_ranges(&remainder.unwrap());
+                        if let Some(split) = result.0 {
+                            total_sum += Workflow::process_ranges(
+                                rule.destination.clone(),
+                                workflows,
+                                split,
+                            );
+                        }
+                        remainder = result.1
+                    }
+                }
+                if let Some(remainder) = remainder {
+                    total_sum += Workflow::process_ranges(
+                        current_workflow.backup.clone(),
+                        workflows,
+                        remainder,
+                    );
+                }
+
+                total_sum
+            }
+        }
+    }
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
@@ -163,7 +242,13 @@ fn get_program_output(input_file: &str) -> (usize, usize) {
         })
         .sum();
 
-    (result_1, 0)
+    let result_2 = Workflow::process_ranges(
+        Destination::Rule("in".to_string()),
+        &workflows,
+        [1..=4000, 1..=4000, 1..=4000, 1..=4000],
+    );
+
+    (result_1, result_2)
 }
 
-base_aoc!(19114, 0);
+base_aoc!(19114, 167409079868000);
