@@ -4,7 +4,7 @@ use std::{collections::BTreeSet, str::FromStr};
 pub mod matrix;
 pub mod parse;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum RightOrLeft {
     Right,
     Left,

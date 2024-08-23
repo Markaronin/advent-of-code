@@ -1,58 +1,18 @@
-use std::{collections::BTreeSet, str::FromStr};
+use std::str::FromStr;
 
 use advent_of_code_util::{base_aoc, parse::read_parsed_lines, RightOrLeft};
 use itertools::Itertools;
+
+/**
+ * Note: I modified the input to be a counterclockwise polygon, because otherwise my method of getting edge distance would be invalid.
+ * An alternative here would be to calculate whether it is counterclockwise and then change the edge distance calculation but this was easier.
+ */
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 struct Coordinate {
     x: isize,
     y: isize,
 }
-impl Coordinate {
-    pub fn get_points_between_vertices(&self, to: &Coordinate) -> Vec<Coordinate> {
-        assert!(self.x == to.x || self.y == to.y);
-        match self.x.cmp(&to.x) {
-            std::cmp::Ordering::Less => (self.x..=to.x)
-                .map(|x| Coordinate { x, y: self.y })
-                .collect(),
-            std::cmp::Ordering::Equal => {
-                if self.y < to.y {
-                    (self.y..=to.y)
-                        .map(|y| Coordinate { x: self.x, y })
-                        .collect()
-                } else {
-                    (to.y..=self.y)
-                        .map(|y| Coordinate { x: self.x, y })
-                        .collect()
-                }
-            }
-            std::cmp::Ordering::Greater => (to.x..=self.x)
-                .map(|x| Coordinate { x, y: self.y })
-                .collect(),
-        }
-    }
-    pub fn get_surrounding_non_diagonal_coordinates(&self) -> Vec<Coordinate> {
-        vec![
-            Coordinate {
-                x: self.x - 1,
-                y: self.y,
-            },
-            Coordinate {
-                x: self.x,
-                y: self.y - 1,
-            },
-            Coordinate {
-                x: self.x + 1,
-                y: self.y,
-            },
-            Coordinate {
-                x: self.x,
-                y: self.y + 1,
-            },
-        ]
-    }
-}
-
 #[derive(Debug, Clone, Copy)]
 enum Direction {
     Up,
@@ -95,130 +55,97 @@ impl FromStr for Instruction {
 impl Instruction {
     pub fn parse_color(&self) -> Self {
         Self {
-            direction: self.direction,
-            amount: isize::from_str_radix(&self.color, 16).unwrap(),
+            direction: match &self.color.chars().nth(5).unwrap() {
+                '0' => Direction::Right,
+                '1' => Direction::Down,
+                '2' => Direction::Left,
+                '3' => Direction::Up,
+                _ => panic!("Invalid direction parsed from color"),
+            },
+            amount: isize::from_str_radix(&self.color[..5], 16).unwrap(),
             color: self.color.clone(),
         }
     }
 }
 
-fn get_edge_coordinates(dig_plan: &[Instruction]) -> BTreeSet<Coordinate> {
-    let mut current_coord = Coordinate { x: 0, y: 0 };
-    let mut vertical_edge_coordinates = BTreeSet::new();
-    for instruction in dig_plan {
-        let next_coordinate = match instruction.direction {
+fn turn_direction(prev: Direction, next: Direction) -> RightOrLeft {
+    match (prev, next) {
+        (Direction::Up, Direction::Left) => RightOrLeft::Left,
+        (Direction::Up, Direction::Right) => RightOrLeft::Right,
+        (Direction::Down, Direction::Left) => RightOrLeft::Right,
+        (Direction::Down, Direction::Right) => RightOrLeft::Left,
+        (Direction::Left, Direction::Up) => RightOrLeft::Right,
+        (Direction::Left, Direction::Down) => RightOrLeft::Left,
+        (Direction::Right, Direction::Up) => RightOrLeft::Left,
+        (Direction::Right, Direction::Down) => RightOrLeft::Right,
+        _ => panic!("Invalid turn direction"),
+    }
+}
+
+fn calculate_filled_coordinates(instructions: &[Instruction]) -> usize {
+    let mut coords = vec![Coordinate { x: 0, y: 0 }];
+
+    // Count the turn directions surrounding this edge. RR = +1, RL/LR = 0, LL = -1 distance
+
+    for i in 0..instructions.len() {
+        let prev_index = (instructions.len() + i - 1) % instructions.len();
+        let next_index = (i + 1) % instructions.len();
+
+        let prev_turn_direction = turn_direction(
+            instructions[prev_index].direction,
+            instructions[i].direction,
+        );
+        let next_turn_direction = turn_direction(
+            instructions[i].direction,
+            instructions[next_index].direction,
+        );
+        let distance_addition = match (prev_turn_direction, next_turn_direction) {
+            (RightOrLeft::Right, RightOrLeft::Right) => 1,
+            (RightOrLeft::Right, RightOrLeft::Left) => 0,
+            (RightOrLeft::Left, RightOrLeft::Right) => 0,
+            (RightOrLeft::Left, RightOrLeft::Left) => -1,
+        };
+
+        let dist = instructions[i].amount + distance_addition;
+
+        let prev = coords.last().unwrap();
+        let next_coord = match instructions[i].direction {
             Direction::Up => Coordinate {
-                x: current_coord.x,
-                y: current_coord.y - instruction.amount,
+                x: prev.x,
+                y: prev.y + dist,
             },
             Direction::Down => Coordinate {
-                x: current_coord.x,
-                y: current_coord.y + instruction.amount,
+                x: prev.x,
+                y: prev.y - dist,
             },
             Direction::Left => Coordinate {
-                x: current_coord.x - instruction.amount,
-                y: current_coord.y,
+                x: prev.x - dist,
+                y: prev.y,
             },
             Direction::Right => Coordinate {
-                x: current_coord.x + instruction.amount,
-                y: current_coord.y,
+                x: prev.x + dist,
+                y: prev.y,
             },
         };
-        let edge_coords = current_coord.get_points_between_vertices(&next_coordinate);
-        vertical_edge_coordinates.extend(edge_coords);
-        current_coord = next_coordinate;
-    }
-    vertical_edge_coordinates
-}
-
-fn get_filled_coordinates(edge_coordinates: &BTreeSet<Coordinate>) -> BTreeSet<Coordinate> {
-    let mut filled_coords = BTreeSet::new();
-    filled_coords.append(&mut edge_coordinates.clone());
-
-    let mut queue = BTreeSet::new();
-
-    let starting_coordinate = if cfg!(test) {
-        Coordinate { x: 1, y: 1 }
-    } else {
-        Coordinate { x: 1, y: -1 }
-    };
-
-    queue.insert(starting_coordinate);
-
-    while let Some(next) = queue.pop_first() {
-        for surrounding in next.get_surrounding_non_diagonal_coordinates() {
-            if !queue.contains(&surrounding) && !filled_coords.contains(&surrounding) {
-                queue.insert(surrounding);
-            }
-        }
-
-        filled_coords.insert(next);
+        coords.push(next_coord);
     }
 
-    filled_coords
-}
+    *coords.last_mut().unwrap() = Coordinate { x: 0, y: 0 };
 
-#[derive(Debug)]
-struct Instruction2 {
-    dir: RightOrLeft,
-    distance: isize,
-}
-fn calculate_filled_coordinates(instructions: &[Instruction]) -> usize {
-    // We can just look at "squares" caused by the fact that we're in a loop
-    // NEW IDEA: Take segments of Up-Over-Down (or their equivalents), chop off the square, and turn it into just over
+    let total_area = coords
+        .windows(2)
+        .map(|w| (w[0].x * w[1].y) - (w[1].x * w[0].y))
+        .sum::<isize>()
+        .abs()
+        / 2;
 
-    let mut previous_direction = match instructions[0].direction {
-        Direction::Up => Direction::Left,
-        Direction::Down => Direction::Right,
-        Direction::Left => Direction::Down,
-        Direction::Right => Direction::Up,
-    };
-    let mut new_instructions = Vec::new();
-    for instruction in instructions {
-        let turn_direction = match (previous_direction, instruction.direction) {
-            (Direction::Up, Direction::Left) => RightOrLeft::Left,
-            (Direction::Up, Direction::Right) => RightOrLeft::Right,
-            (Direction::Left, Direction::Down) => RightOrLeft::Left,
-            (Direction::Left, Direction::Up) => RightOrLeft::Right,
-            (Direction::Right, Direction::Up) => RightOrLeft::Left,
-            (Direction::Right, Direction::Down) => RightOrLeft::Right,
-            (Direction::Down, Direction::Right) => RightOrLeft::Left,
-            (Direction::Down, Direction::Left) => RightOrLeft::Right,
-            _ => panic!(
-                "Unimplemented direction change {previous_direction:?} {:?}",
-                instruction.direction
-            ),
-        };
-        previous_direction = instruction.direction;
-        new_instructions.push(Instruction2 {
-            dir: turn_direction,
-            distance: instruction.amount,
-        })
-    }
-
-    dbg!(new_instructions);
-
-    let mut total_area = 0;
-
-    // Method to maybe make this easier: move "instruction" to a new type that has "right" and "left"
-
-    // while instructions.len() > 4 {
-    // Step 1: find the start index of an up-over-down segment
-    // Step 2: calculate the area (up * over)
-    // Step 3: replace with just a "down" segment, and append "over" segment to the segment before
-    // }
-
-    total_area
+    total_area.try_into().unwrap()
 }
 
 fn get_program_output(input_file: &str) -> (usize, usize) {
     let input: Vec<Instruction> = read_parsed_lines(input_file);
 
-    let result_1 = {
-        let edges = get_edge_coordinates(&input);
-        let filled_area = get_filled_coordinates(&edges);
-        filled_area.len()
-    };
+    let result_1 = calculate_filled_coordinates(&input);
 
     let result_2 =
         calculate_filled_coordinates(&input.iter().map(|i| i.parse_color()).collect_vec());
