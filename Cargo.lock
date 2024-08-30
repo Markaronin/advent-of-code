@@ -470,6 +470,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2023_22"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
 name = "ac_2023_23"
 version = "0.1.0"
 dependencies = [
