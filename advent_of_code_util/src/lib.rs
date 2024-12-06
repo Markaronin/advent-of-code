@@ -4,6 +4,14 @@ use std::{collections::BTreeSet, str::FromStr};
 pub mod matrix;
 pub mod parse;
 
+#[derive(Debug, PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
+pub enum Direction {
+    Up,
+    Down,
+    Right,
+    Left,
+}
+
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum RightOrLeft {
     Right,
@@ -32,6 +40,56 @@ impl FromStr for Coordinate {
     }
 }
 impl Coordinate {
+    pub fn space_in_direction(
+        &self,
+        direction: Direction,
+        max_height: usize,
+        max_width: usize,
+    ) -> Option<Self> {
+        match direction {
+            Direction::Up => {
+                if self.y > 0 {
+                    Some(Self {
+                        x: self.x,
+                        y: self.y - 1,
+                    })
+                } else {
+                    None
+                }
+            }
+            Direction::Down => {
+                if self.y < max_height - 1 {
+                    Some(Self {
+                        x: self.x,
+                        y: self.y + 1,
+                    })
+                } else {
+                    None
+                }
+            }
+            Direction::Right => {
+                if self.x < max_width - 1 {
+                    Some(Self {
+                        x: self.x + 1,
+                        y: self.y,
+                    })
+                } else {
+                    None
+                }
+            }
+            Direction::Left => {
+                if self.x > 0 {
+                    Some(Self {
+                        x: self.x - 1,
+                        y: self.y,
+                    })
+                } else {
+                    None
+                }
+            }
+        }
+    }
+
     /**
     assumes that from and to are either on a horizontal or vertical line
     */
