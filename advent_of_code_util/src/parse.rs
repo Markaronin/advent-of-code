@@ -60,6 +60,19 @@ where
         .collect()
 }
 
+pub fn read_list_of_lists<P, F, T>(filename: P, separator: &str, transform: F) -> Vec<Vec<T>>
+where
+    P: AsRef<Path>,
+    F: FnMut(&str) -> T + Copy,
+{
+    let file = File::open(filename).unwrap();
+    io::BufReader::new(file)
+        .lines()
+        .map(|line| line.unwrap())
+        .map(|line| line.split(separator).map(transform).collect_vec())
+        .collect()
+}
+
 pub fn read_blocks<P>(filename: P) -> Vec<Vec<String>>
 where
     P: AsRef<Path>,
