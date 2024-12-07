@@ -1,0 +1,33 @@
+{
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "maattdd.gitless",
+                "rust-lang.rust-analyzer",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "bash",
+                        "icon": "terminal-bash"
+                    }
+                }
+            }
+        }
+    },
+    "remoteUser": "${localEnv:USER}",
+    "updateRemoteUserUID": true,
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "REMOTE_USER": "${localEnv:USER}"
+        }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached"
+    ],
+    "forwardPorts": []
+}
