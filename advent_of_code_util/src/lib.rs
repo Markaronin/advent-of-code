@@ -1,6 +1,7 @@
 use itertools::Itertools;
 use std::{collections::BTreeSet, str::FromStr};
 
+pub mod icoordinate;
 pub mod matrix;
 pub mod parse;
 
