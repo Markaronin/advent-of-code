@@ -674,6 +674,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2024_15"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
 name = "ac_2024_16"
 version = "0.1.0"
 dependencies = [
@@ -707,7 +715,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "ac_2024_20"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2024_21"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
 name = "ac_2024_22"
+version = "0.1.0"
+dependencies = [
+ "advent_of_code_util",
+ "itertools",
+]
+
+[[package]]
+name = "ac_2024_24"
 version = "0.1.0"
 dependencies = [
  "advent_of_code_util",
