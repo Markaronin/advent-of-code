@@ -5,7 +5,7 @@
                 "maattdd.gitless",
                 "rust-lang.rust-analyzer",
                 "GitHub.copilot",
-                "GitHub.copilot-chat",
+                "GitHub.copilot-chat"
             ],
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash",
